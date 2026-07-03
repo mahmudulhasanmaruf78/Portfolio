@@ -7,7 +7,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
-import { NAV_LINKS } from '@/lib/constants'
+import { NAV_LINKS, SITE_META } from '@/lib/constants'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -62,7 +62,7 @@ export function Navbar() {
             className="group relative z-50 flex items-center gap-2 text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
           >
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface border border-surface-border text-foreground transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/10 group-hover:text-accent shadow-card group-hover:shadow-glow-sm">
-              R
+              {SITE_META.name[0]}
             </div>
             <span>Mahmudul Hasan Maruf</span>
           </Link>

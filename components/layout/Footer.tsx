@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight, Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
-import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants'
+import { NAV_LINKS, SOCIAL_LINKS, SITE_META } from '@/lib/constants'
 import { FadeIn } from '@/components/ui/Animations'
 
 export function Footer() {
@@ -19,7 +19,7 @@ export function Footer() {
               className="inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
             >
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-surface border border-surface-border shadow-card">
-                R
+                {SITE_META.name[0]}
               </div>
               <span>Mahmudul Hasan Maruf</span>
             </Link>
