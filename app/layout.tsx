@@ -57,6 +57,7 @@ export const metadata: Metadata = {
 
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
 import { BackToTop } from '@/components/ui/BackToTop'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export default function RootLayout({
   children,
@@ -76,6 +77,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <BackToTop />
+        <SpeedInsights />
       </body>
     </html>
   )
