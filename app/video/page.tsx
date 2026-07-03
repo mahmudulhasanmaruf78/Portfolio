@@ -6,14 +6,14 @@ import { Badge } from '@/components/ui/Badge'
 
 export const metadata: Metadata = {
   title: 'Video Introduction',
-  description: 'A brief video introduction by Rafi Hassan.',
+  description: 'A brief video introduction by Mahmudul Hasan Maruf.',
 }
 
 export default function VideoPage() {
   const transcriptSections = [
     {
       time: '0:00',
-      text: "Hi, I'm Rafi Hassan. I'm currently in my final year studying Computer Science and Engineering at American International University-Bangladesh (AIUB).",
+      text: "Hi, I'm Mahmudul Hasan Maruf. I'm currently in my final year studying Computer Science and Engineering at American International University-Bangladesh (AIUB).",
     },
     {
       time: '0:15',

@@ -12,7 +12,7 @@ import { SOCIAL_LINKS } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Resume',
-  description: 'View or download the professional resume of Rafi Hassan.',
+  description: 'View or download the professional resume of Mahmudul Hasan Maruf.',
 }
 
 export default function ResumePage() {

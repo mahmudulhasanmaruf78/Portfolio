@@ -6,7 +6,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Animation
 
 export const metadata: Metadata = {
   title: 'Education',
-  description: 'Academic background, coursework, and university activities of Rafi Hassan at AIUB.',
+  description: 'Academic background, coursework, and university activities of Mahmudul Hasan Maruf at AIUB.',
 }
 
 export default function EducationPage() {

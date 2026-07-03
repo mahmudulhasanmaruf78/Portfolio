@@ -64,7 +64,7 @@ export function Navbar() {
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface border border-surface-border text-foreground transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/10 group-hover:text-accent shadow-card group-hover:shadow-glow-sm">
               R
             </div>
-            <span>Rafi Hassan</span>
+            <span>Mahmudul Hasan Maruf</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -174,7 +174,7 @@ export function Navbar() {
                 <div className="h-px w-full bg-surface-border" />
                 <div className="flex gap-4">
                   <a
-                    href="https://github.com/rafihassan"
+                    href="https://github.com/mahmudulhasanmaruf78"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-surface-border text-muted-foreground transition-colors hover:text-foreground hover:bg-surface-hover"
@@ -182,7 +182,7 @@ export function Navbar() {
                     <GithubIcon size={18} />
                   </a>
                   <a
-                    href="https://linkedin.com/in/rafihassan"
+                    href="https://linkedin.com/in/mahmudulhasanmaruf78"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-surface-border text-muted-foreground transition-colors hover:text-foreground hover:bg-surface-hover"

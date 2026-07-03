@@ -1,18 +1,18 @@
 // lib/data/profile.ts
 
 export const profile = {
-  name: '[Your Name]',
+  name: 'Mahmudul Hasan Maruf',
   role: 'Final-Year CS&E Student',
   tagline: 'Aspiring Software Engineer & Web Developer',
   university: 'American International University–Bangladesh (AIUB)',
   department: 'Computer Science & Engineering',
   expectedGraduation: 'December 2025',
-  cgpa: '[3.85]', // Replace with actual CGPA
+  cgpa: '3.68',
   cgpaScale: '4.00',
   location: 'Dhaka, Bangladesh',
-  email: '[your.email@example.com]',
-  github: '[https://github.com/yourusername]',
-  linkedin: '[https://linkedin.com/in/yourusername]',
+  email: 'mahmudul.hasan@student.aiub.edu',
+  github: 'https://github.com/mahmudulhasanmaruf78',
+  linkedin: 'https://linkedin.com/in/mahmudulhasanmaruf78',
   availability: 'Available for internships and entry-level roles starting January 2026',
   bio: [
     "I'm a final-year Computer Science & Engineering student at AIUB with a deep passion for building robust and intuitive web applications. My journey into software development began with a curiosity for how complex systems are architected behind the scenes, and it quickly evolved into a dedicated pursuit of engineering excellence.",
@@ -48,10 +48,10 @@ export const profile = {
     'When I am not writing code, I enjoy playing chess, exploring UI design trends, and reading about software architecture.',
   ],
   stats: {
-    projects: 10, // Replace with your actual number
-    certificates: 5, // Replace with your actual number
-    monthsLearning: 36, // Replace with your actual number
-    cgpa: '[3.85]', // Replace with your actual CGPA
+    projects: 5,
+    certificates: 5,
+    monthsLearning: 3,
+    cgpa: '3.68',
   },
   timeline: [
     {

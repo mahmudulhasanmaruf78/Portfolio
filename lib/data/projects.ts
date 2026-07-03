@@ -38,7 +38,7 @@ export const projects: Project[] = [
     featured: true,
     github: '[https://github.com/yourusername/capstone]',
     demo: '[https://your-capstone-demo.vercel.app]',
-    coverImage: '/placeholder-project.svg',
+    coverImage: '/placeholder-project.svg', // TODO: Replace with real project screenshot
     overview: '[Provide a high-level overview of the project. What is it, who is it for, and what core value does it provide?]',
     problemStatement: '[Explain the specific problem this project addresses. e.g., Students lacked a centralized platform to discover university-specific internship opportunities, leading to fragmented communication.]',
     myRole: '[Detail your specific responsibilities. e.g., I acted as the lead full-stack developer, responsible for architecting the database schema, designing the UI system, and implementing the core authentication flow.]',
@@ -47,8 +47,8 @@ export const projects: Project[] = [
     solutions: '[How did you solve the challenge? e.g., Implemented Prisma indexing on highly queried fields and utilized React Server Components to push heavy rendering logic to the server.]',
     lessonsLearned: '[What did you take away? e.g., Gained deep practical experience in relational database design and the nuances of Server-Side Rendering in Next.js.]',
     gallery: [
-      '/placeholder-project.svg',
-      '/placeholder-project.svg',
+      '/placeholder-project.svg', // TODO: Replace with real project screenshot
+      '/placeholder-project.svg', // TODO: Replace with real project screenshot
       '/placeholder-project.svg'
     ],
   },
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     featured: true,
     github: '[https://github.com/yourusername/ecommerce]',
     demo: '[https://your-ecommerce-demo.vercel.app]',
-    coverImage: '/placeholder-project.svg',
+    coverImage: '/placeholder-project.svg', // TODO: Replace with real project screenshot
     overview: '[A modern, fully functional e-commerce prototype designed to demonstrate complex global state management and seamless third-party API integrations.]',
     problemStatement: '[Explain the problem. e.g., I needed a challenging project to solidify my understanding of complex global state management (shopping carts) and third-party API integration (payments).]',
     myRole: '[Detail your contribution. e.g., Designed and developed the entire frontend application from scratch, utilizing Redux for state and Firebase for mock authentication.]',
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     solutions: '[How did you solve it? e.g., Utilized Redux Persist connected to local storage, and implemented a custom hook to listen for cross-tab storage events.]',
     lessonsLearned: '[What did you learn? e.g., Mastered Redux Toolkit for predictable state transitions and learned how to securely integrate the Stripe payment gateway.]',
     gallery: [
-      '/placeholder-project.svg',
+      '/placeholder-project.svg', // TODO: Replace with real project screenshot
       '/placeholder-project.svg'
     ],
   },
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     featured: true,
     github: '[https://github.com/yourusername/task-dashboard]',
     demo: '[https://your-dashboard-demo.vercel.app]',
-    coverImage: '/placeholder-project.svg',
+    coverImage: '/placeholder-project.svg', // TODO: Replace with real project screenshot
     overview: '[A highly interactive task management dashboard focused on fluid animations, immediate visual feedback, and clear data visualization.]',
     problemStatement: '[Explain the problem. e.g., Many task management apps feel sluggish or lack intuitive visual feedback during complex interactions like drag-and-drop.]',
     myRole: '[Detail your contribution. e.g., Implemented the drag-and-drop logic from scratch, integrated Chart.js for productivity metrics, and enforced strict type-safety with TypeScript.]',
@@ -98,9 +98,9 @@ export const projects: Project[] = [
     solutions: '[How did you solve it? e.g., Normalized the state structure (using IDs instead of nested objects) and heavily utilized React.memo and useMemo for performance.]',
     lessonsLearned: '[What did you learn? e.g., Deepened my understanding of React performance optimization techniques and advanced TypeScript generic typing.]',
     gallery: [
-      '/placeholder-project.svg',
-      '/placeholder-project.svg',
-      '/placeholder-project.svg',
+      '/placeholder-project.svg', // TODO: Replace with real project screenshot
+      '/placeholder-project.svg', // TODO: Replace with real project screenshot
+      '/placeholder-project.svg', // TODO: Replace with real project screenshot
       '/placeholder-project.svg'
     ],
   },
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     featured: false,
     github: '[https://github.com/yourusername/algo-visualizer]',
     demo: '[https://your-algo-visualizer.vercel.app]',
-    coverImage: '/placeholder-project.svg',
+    coverImage: '/placeholder-project.svg', // TODO: Replace with real project screenshot
     overview: '[A web-based visualization tool that steps through algorithm execution frame-by-frame, highlighting active elements in the DOM.]',
     problemStatement: '[Explain the problem. e.g., Abstract algorithms are notoriously difficult for beginner computer science students to conceptualize and trace mentally.]',
     myRole: '[Detail your contribution. e.g., Implemented the core sorting logic (Merge, Quick, Bubble) and designed the timing mechanism to animate the DOM manipulations.]',
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     status: 'Completed',
     featured: false,
     github: '[https://github.com/yourusername/university-backend]',
-    coverImage: '/placeholder-project.svg',
+    coverImage: '/placeholder-project.svg', // TODO: Replace with real project screenshot
     overview: '[A highly normalized relational database and secure REST API designed to handle complex administrative operations for a university environment.]',
     problemStatement: '[Explain the problem. e.g., University administration required a normalized database system to prevent data anomalies during peak course registration periods.]',
     myRole: '[Detail your contribution. e.g., Designed the Entity-Relationship (ER) diagram, wrote complex SQL queries, and implemented JWT-based role authorization.]',

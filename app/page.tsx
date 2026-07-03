@@ -126,7 +126,7 @@ export default function HomePage() {
                   }}
                   className="block text-muted-foreground text-2xl sm:text-3xl md:text-5xl mb-2 font-medium tracking-tight"
                 >
-                  Hi, I&apos;m Rafi Hassan.
+                  Hi, I&apos;m Mahmudul Hasan Maruf.
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-1">

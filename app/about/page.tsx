@@ -3,7 +3,7 @@ import AboutClient from './AboutClient'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn more about Rafi Hassan, a web developer and computer science student from Dhaka, Bangladesh.',
+  description: 'Learn more about Mahmudul Hasan Maruf, a web developer and computer science student from Dhaka, Bangladesh.',
 }
 
 export default function AboutPage() {

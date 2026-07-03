@@ -35,15 +35,27 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    console.log('Form submitted:', data)
-    setIsSubmitting(false)
-    setIsSuccess(true)
-    reset()
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSuccess(false), 5000)
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setIsSuccess(true)
+      reset()
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSuccess(false), 5000)
+    } catch (error) {
+      console.error(error)
+      alert('There was an error sending your message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -181,7 +193,7 @@ export default function ContactPage() {
                     id="message"
                     rows={5}
                     {...register('message')}
-                    placeholder="Hi Rafi, I'd like to talk about..."
+                    placeholder="Hi Mahmudul, I'd like to talk about..."
                     className={cn(
                       'input-base resize-none',
                       errors.message && 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20'

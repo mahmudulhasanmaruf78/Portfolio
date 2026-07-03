@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   description: SITE_META.description,
   keywords: [
-    'Rafi Hassan',
+    'Mahmudul Hasan Maruf',
     'CS student portfolio',
     'web developer Bangladesh',
     'React developer intern',

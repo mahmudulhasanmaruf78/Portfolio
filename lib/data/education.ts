@@ -5,7 +5,7 @@ export const education = {
     name: 'American International University–Bangladesh (AIUB)',
     degree: 'Bachelor of Science in Computer Science & Engineering',
     duration: 'Jan 2022 – Dec 2025 (Expected)',
-    cgpa: '[3.85] / 4.00',
+    cgpa: '3.68 / 4.00',
     status: 'Final Year',
     courses: [
       'Data Structures & Algorithms',
@@ -21,26 +21,22 @@ export const education = {
       'Compiler Design',
       'Computer Graphics',
     ],
-    activities: [
-      'Member — AIUB Computer Club (ACC)',
-      'Participant — AIUB CS Fest Hackathon [Year]',
-      'Volunteer — Department Orientation Program [Year]',
-    ],
+    activities: [],
   },
   secondary: [
     {
-      name: '[Name of Your College]',
+      name: 'Dhaka Imperial College',
       level: 'Higher Secondary Certificate (HSC)',
       group: 'Science',
-      result: 'GPA [5.00]',
-      year: '[2021]',
+      result: 'GPA 4.83',
+      year: '2021',
     },
     {
-      name: '[Name of Your High School]',
+      name: 'Court Model High School, Ragshahi',
       level: 'Secondary School Certificate (SSC)',
       group: 'Science',
-      result: 'GPA [5.00]',
-      year: '[2019]',
+      result: 'GPA 5.00',
+      year: '2018',
     },
   ],
 }

@@ -21,7 +21,7 @@ export function Footer() {
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-surface border border-surface-border shadow-card">
                 R
               </div>
-              <span>Rafi Hassan</span>
+              <span>Mahmudul Hasan Maruf</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
               Final-year CS&E student building premium web applications. Passionate about interfaces, performance, and clean code.
@@ -119,7 +119,7 @@ export function Footer() {
 
         <div className="mt-12 md:mt-16 pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {currentYear} Rafi Hassan. Built with Next.js & Tailwind.
+            &copy; {currentYear} Mahmudul Hasan Maruf. Built with Next.js & Tailwind.
           </p>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500/20 items-center justify-center">
