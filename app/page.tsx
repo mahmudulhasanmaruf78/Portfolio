@@ -163,7 +163,7 @@ export default function HomePage() {
             >
               Final Year CS&E Student at <strong className="text-foreground font-semibold">AIUB</strong>. 
               Passionate about frontend architecture, responsive design, and writing code that scales. 
-              Seeking my first engineering role.
+              Seeking internship and entry-level opportunities in Web Development.
             </motion.p>
 
             {/* Tech stack */}
@@ -258,20 +258,22 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats Section ────────────────────────────────────────────────── */}
-      <section aria-label="Quick stats" className="relative z-10 bg-surface/50 border-y border-surface-border backdrop-blur-md">
-        <div className="container-custom">
-          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-surface-border lg:divide-y-0 -mx-5 sm:-mx-8 xl:-mx-10 border-x border-surface-border">
+      <section aria-label="Quick stats" className="relative z-10 bg-surface/30 border-y border-surface-border backdrop-blur-md">
+        <div className="container-custom py-6 sm:py-8">
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 items-center">
             {stats.map(({ label, value, icon: Icon, sub }) => (
-              <StaggerItem key={label}>
-                <div className="group flex flex-col p-6 sm:p-10 transition-colors hover:bg-surface-hover/50">
-                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-surface border border-surface-border shadow-sm group-hover:border-accent/30 group-hover:bg-accent/5 transition-all">
+              <StaggerItem key={label} className="flex justify-center">
+                <div className="group flex items-center gap-4 transition-colors w-full max-w-[200px] lg:max-w-none">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface border border-surface-border shadow-sm group-hover:border-accent/30 group-hover:bg-accent/5 transition-all">
                     <Icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors" />
                   </div>
-                  <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className="text-3xl font-semibold tracking-tight text-foreground">{value}</span>
-                    {sub && <span className="text-sm font-medium text-muted-foreground">{sub}</span>}
+                  <div className="flex flex-col min-w-0">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-2xl font-bold tracking-tight text-foreground">{value}</span>
+                      {sub && <span className="text-xs text-muted-foreground">{sub}</span>}
+                    </div>
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-muted-foreground truncate">{label}</span>
                   </div>
-                  <span className="text-xs font-semibold tracking-wider uppercase text-muted-foreground">{label}</span>
                 </div>
               </StaggerItem>
             ))}
@@ -280,7 +282,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Projects ─────────────────────────────────────── */}
-      <section className="section-padding relative z-10 bg-background">
+      <section className="pt-16 pb-20 md:pt-20 md:pb-28 lg:pt-24 lg:pb-32 relative z-10 bg-background">
         <div className="container-custom">
           <FadeIn>
             <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
