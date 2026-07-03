@@ -83,17 +83,31 @@ export default function SkillsClient() {
                 </div>
                 
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {category.skills.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="group flex items-center justify-between p-4 rounded-xl border border-surface-border bg-surface shadow-sm transition-all duration-200 hover:border-white/20 hover:bg-surface-hover hover:shadow-card-hover"
-                    >
-                      <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">{skill.name}</span>
-                      <Badge variant={levelVariantMap[skill.level]} dot>
-                        {skill.level}
-                      </Badge>
-                    </div>
-                  ))}
+                  {category.skills.map((skill) => {
+                    const percentage = skill.level === 'Confident' ? 90 : skill.level === 'Familiar' ? 65 : 35
+                    return (
+                      <div
+                        key={skill.name}
+                        className="group flex flex-col p-4 rounded-xl border border-surface-border bg-surface shadow-sm transition-all duration-200 hover:border-white/20 hover:bg-surface-hover hover:shadow-card-hover"
+                      >
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">{skill.name}</span>
+                          <Badge variant={levelVariantMap[skill.level]} dot>
+                            {skill.level}
+                          </Badge>
+                        </div>
+                        <div className="h-1.5 w-full bg-surface-elevated rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${percentage}%` }}
+                            viewport={{ once: true, margin: '-50px' }}
+                            transition={{ duration: 1, ease: [0.21, 0.47, 0.32, 0.98] }}
+                            className="h-full bg-accent/80 rounded-full"
+                          />
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             ))}

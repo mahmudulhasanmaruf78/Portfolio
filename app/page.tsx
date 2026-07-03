@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 import {
   ArrowRight,
@@ -12,6 +12,8 @@ import {
   TrendingUp,
   Mail,
   ChevronRight,
+  Mouse,
+  ChevronDown
 } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { profile } from '@/lib/data/profile'
@@ -35,25 +37,49 @@ const featuredProjects = projects.filter((p) => p.featured).slice(0, 3)
 
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null)
+  
+  // Scroll Parallax
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   })
-
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
+  // Mouse Parallax
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 })
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 })
+  const reverseX = useTransform(smoothX, (v) => -v)
+  const reverseY = useTransform(smoothY, (v) => -v)
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
+    const x = (e.clientX - left) / width - 0.5
+    const y = (e.clientY - top) / height - 0.5
+    mouseX.set(x * 100) // Max 50px movement
+    mouseY.set(y * 100)
+  }
 
   return (
     <div ref={containerRef} className="relative">
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section
         aria-label="Introduction"
+        onMouseMove={handleMouseMove}
         className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-16 md:pt-20"
       >
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 z-0 bg-grid-pattern opacity-40 mix-blend-overlay pointer-events-none" />
-        <div className="glow-orb glow-orb-blue top-1/4 -left-32 w-96 h-96 pointer-events-none" />
-        <div className="glow-orb glow-orb-purple bottom-1/4 right-0 w-[30rem] h-[30rem] pointer-events-none opacity-10" />
+        <motion.div 
+          style={{ x: smoothX, y: smoothY }}
+          className="glow-orb glow-orb-blue top-1/4 -left-32 w-96 h-96 pointer-events-none" 
+        />
+        <motion.div 
+          style={{ x: reverseX, y: reverseY }}
+          className="glow-orb glow-orb-purple bottom-1/4 right-0 w-[30rem] h-[30rem] pointer-events-none opacity-10" 
+        />
         
         <motion.div
           style={{ y, opacity }}
@@ -144,13 +170,19 @@ export default function HomePage() {
 
         {/* Scroll Indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
         >
-          <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-muted-foreground">Scroll</span>
-          <div className="h-12 w-[1px] bg-gradient-to-b from-muted-foreground/50 to-transparent" />
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-1"
+          >
+            <Mouse size={20} className="text-muted-foreground opacity-70" />
+            <ChevronDown size={16} className="text-muted-foreground opacity-50" />
+          </motion.div>
         </motion.div>
       </section>
 

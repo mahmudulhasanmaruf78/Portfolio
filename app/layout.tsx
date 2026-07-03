@@ -55,6 +55,9 @@ export const metadata: Metadata = {
   },
 }
 
+import { ScrollProgress } from '@/components/ui/ScrollProgress'
+import { BackToTop } from '@/components/ui/BackToTop'
+
 export default function RootLayout({
   children,
 }: {
@@ -65,12 +68,14 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="min-h-dvh bg-background text-foreground antialiased">
+      <body className="min-h-dvh bg-background text-foreground antialiased relative">
+        <ScrollProgress />
         <Navbar />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )
