@@ -258,7 +258,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats Section ────────────────────────────────────────────────── */}
-      <section aria-label="Quick stats" className="relative z-10 bg-surface/30 border-y border-surface-border backdrop-blur-md">
+      <section aria-label="Quick stats" className="relative z-10 mt-12 md:mt-14 bg-surface/30 border-y border-surface-border backdrop-blur-md">
         <div className="container-custom py-6 sm:py-8">
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 items-center">
             {stats.map(({ label, value, icon: Icon, sub }) => (
