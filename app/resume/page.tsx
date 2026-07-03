@@ -162,13 +162,13 @@ export default function ResumePage() {
                       <p className="text-xs font-medium text-foreground/70 mb-2">{project.stack.join(' • ')}</p>
                       <ul className="space-y-1.5 list-disc list-outside ml-4">
                         <li className="text-sm text-muted-foreground leading-relaxed pl-1">
-                          <span className="font-medium text-foreground/80">Problem solved: </span>{project.problem}
+                          <span className="font-medium text-foreground/80">Problem solved: </span>{project.problemStatement}
                         </li>
                         <li className="text-sm text-muted-foreground leading-relaxed pl-1">
-                          <span className="font-medium text-foreground/80">Contribution: </span>{project.contribution}
+                          <span className="font-medium text-foreground/80">Role: </span>{project.myRole}
                         </li>
                         <li className="text-sm text-muted-foreground leading-relaxed pl-1">
-                          <span className="font-medium text-foreground/80">Key learning: </span>{project.learned}
+                          <span className="font-medium text-foreground/80">Key learning: </span>{project.lessonsLearned}
                         </li>
                       </ul>
                     </div>

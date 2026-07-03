@@ -43,7 +43,7 @@ export default function HomePage() {
     target: containerRef,
     offset: ['start start', 'end start'],
   })
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 80])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   // Mouse Parallax
@@ -58,8 +58,8 @@ export default function HomePage() {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
     const x = (e.clientX - left) / width - 0.5
     const y = (e.clientY - top) / height - 0.5
-    mouseX.set(x * 100) // Max 50px movement
-    mouseY.set(y * 100)
+    mouseX.set(x * 50) // Reduced from 100px to 50px for subtler mouse parallax
+    mouseY.set(y * 50)
   }
 
   return (
@@ -99,8 +99,8 @@ export default function HomePage() {
 
             {/* Main Headline */}
             <FadeIn delay={0.2} duration={0.8}>
-              <h1 className="text-5xl font-semibold tracking-[-0.03em] text-foreground sm:text-6xl md:text-7xl lg:text-[5rem] leading-[1.05]">
-                <span className="block text-muted-foreground text-3xl sm:text-4xl md:text-5xl mb-2 font-medium tracking-tight">Hi, I&apos;m Rafi Hassan.</span>
+              <h1 className="text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl md:text-7xl lg:text-[5rem] leading-[1.05]">
+                <span className="block text-muted-foreground text-2xl sm:text-3xl md:text-5xl mb-2 font-medium tracking-tight">Hi, I&apos;m Rafi Hassan.</span>
                 I build clean, modern <br className="hidden md:block" />
                 <span className="text-gradient pr-2">web experiences.</span>
               </h1>
@@ -192,7 +192,7 @@ export default function HomePage() {
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-surface-border lg:divide-y-0 -mx-5 sm:-mx-8 xl:-mx-10 border-x border-surface-border">
             {stats.map(({ label, value, icon: Icon, sub }) => (
               <StaggerItem key={label}>
-                <div className="group flex flex-col p-8 sm:p-10 transition-colors hover:bg-surface-hover/50">
+                <div className="group flex flex-col p-6 sm:p-10 transition-colors hover:bg-surface-hover/50">
                   <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-surface border border-surface-border shadow-sm group-hover:border-accent/30 group-hover:bg-accent/5 transition-all">
                     <Icon size={18} className="text-muted-foreground group-hover:text-accent transition-colors" />
                   </div>
@@ -295,7 +295,7 @@ export default function HomePage() {
       <section className="section-padding-sm pt-0 relative z-10 bg-background">
         <div className="container-custom">
           <ScaleIn>
-            <div className="card-glass relative overflow-hidden p-10 md:p-16 text-center shadow-modal">
+            <div className="card-glass relative overflow-hidden p-8 md:p-16 text-center shadow-modal">
               {/* Decorative glows */}
               <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-accent/20 blur-[80px] pointer-events-none" />
               <div className="absolute -right-20 -bottom-20 h-64 w-64 rounded-full bg-purple-500/20 blur-[80px] pointer-events-none" />

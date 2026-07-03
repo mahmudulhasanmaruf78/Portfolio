@@ -21,7 +21,7 @@ export function FadeIn({
   className,
   delay = 0,
   direction = 'up',
-  duration = 0.5,
+  duration = 0.4,
   once = true,
   amount = 0.1,
 }: FadeInProps) {
@@ -30,10 +30,10 @@ export function FadeIn({
   const directionOffset = shouldReduceMotion
     ? {}
     : {
-        up: { y: 18 },
-        down: { y: -18 },
-        left: { x: 18 },
-        right: { x: -18 },
+        up: { y: 12 },
+        down: { y: -12 },
+        left: { x: 12 },
+        right: { x: -12 },
         none: {},
       }[direction]
 
@@ -61,7 +61,7 @@ interface StaggerContainerProps {
 export function StaggerContainer({
   children,
   className,
-  staggerDelay = 0.06,
+  staggerDelay = 0.04,
   delayChildren = 0,
 }: StaggerContainerProps) {
   return (
@@ -98,12 +98,12 @@ export function StaggerItem({
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+        hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 10 },
         visible: {
           opacity: 1,
           y: 0,
           transition: {
-            duration: 0.45,
+            duration: 0.35,
             ease: EASE_SMOOTH,
           },
         },
@@ -129,10 +129,10 @@ export function ScaleIn({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95 }}
+      initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.97 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.4, delay, ease: EASE_SMOOTH }}
+      transition={{ duration: 0.35, delay, ease: EASE_SMOOTH }}
     >
       {children}
     </motion.div>
