@@ -71,7 +71,7 @@ export default function HomePage() {
       <section
         aria-label="Introduction"
         onMouseMove={handleMouseMove}
-        className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-16 md:pt-20"
+        className="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-16 md:pt-20 pb-24 md:pb-32"
       >
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 z-0 bg-grid-pattern opacity-40 mix-blend-overlay pointer-events-none" />
