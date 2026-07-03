@@ -161,11 +161,15 @@ export default function ResumePage() {
                       </div>
                       <p className="text-xs font-medium text-foreground/70 mb-2">{project.stack.join(' • ')}</p>
                       <ul className="space-y-1.5 list-disc list-outside ml-4">
-                        {project.highlights.map((highlight, j) => (
-                          <li key={j} className="text-sm text-muted-foreground leading-relaxed pl-1">
-                            {highlight}
-                          </li>
-                        ))}
+                        <li className="text-sm text-muted-foreground leading-relaxed pl-1">
+                          <span className="font-medium text-foreground/80">Problem solved: </span>{project.problem}
+                        </li>
+                        <li className="text-sm text-muted-foreground leading-relaxed pl-1">
+                          <span className="font-medium text-foreground/80">Contribution: </span>{project.contribution}
+                        </li>
+                        <li className="text-sm text-muted-foreground leading-relaxed pl-1">
+                          <span className="font-medium text-foreground/80">Key learning: </span>{project.learned}
+                        </li>
                       </ul>
                     </div>
                   ))}

@@ -3,8 +3,7 @@
 export type Project = {
   id: string
   title: string
-  description: string
-  longDescription: string
+  description: string // Short summary for the card
   role: string
   year: string
   category: string[]
@@ -13,17 +12,20 @@ export type Project = {
   featured: boolean
   github?: string
   demo?: string
-  highlights: string[]
+  
+  // Detailed Breakdown for Modal
+  problem: string
+  solution: string
+  contribution: string
+  challenges: string
+  learned: string
 }
 
 export const projects: Project[] = [
   {
     id: 'capstone-project',
     title: '[Capstone Project Name]',
-    description:
-      'A comprehensive full-stack platform designed to [solve a specific problem, e.g., streamline campus recruitment]. Built with modern web technologies for high performance and scalability.',
-    longDescription:
-      'This application serves as my final-year engineering capstone project. It addresses the inefficiencies in [specific domain] by providing a centralized, intuitive platform. I led the architectural design and full-stack implementation, ensuring the system is both performant and easily maintainable. The backend utilizes [Technology] to handle complex relational data, while the frontend delivers a seamless, responsive experience using [Technology].',
+    description: 'A comprehensive full-stack platform designed to [solve a specific problem, e.g., streamline campus recruitment].',
     role: 'Full Stack Developer',
     year: '2025',
     category: ['Full Stack', 'University', 'Web App'],
@@ -32,42 +34,34 @@ export const projects: Project[] = [
     featured: true,
     github: '[https://github.com/yourusername/capstone]',
     demo: '[https://your-capstone-demo.vercel.app]',
-    highlights: [
-      'Architected a robust relational database schema capable of handling concurrent user transactions.',
-      'Implemented secure authentication and role-based authorization flows.',
-      'Optimized frontend rendering strategies (Server-Side Rendering and Static Site Generation) to achieve high Lighthouse performance scores.',
-      'Designed a scalable component library using Tailwind CSS for consistent UI across the platform.',
-    ],
+    problem: '[Explain the specific problem this project addresses. e.g., Students lacked a centralized platform to discover university-specific internship opportunities, leading to fragmented communication.]',
+    solution: '[Describe your solution. e.g., Developed a centralized web portal where administrators can post opportunities and students can apply with a single click, managed through a custom dashboard.]',
+    contribution: '[Detail what you actually did. e.g., Architected the database schema, implemented secure JWT authentication, and built the responsive frontend UI.]',
+    challenges: '[Mention a technical hurdle. e.g., Optimizing database queries for the search filtering system without degrading performance on the student dashboard.]',
+    learned: '[What did you take away? e.g., Gained deep practical experience in relational database design and the nuances of Server-Side Rendering in Next.js.]',
   },
   {
     id: 'ecommerce-platform',
     title: '[E-Commerce Storefront]',
-    description:
-      'A modern e-commerce storefront featuring a fully functional shopping cart, secure checkout process, and an intuitive product filtering system.',
-    longDescription:
-      'Developed a modern e-commerce web application to deepen my understanding of state management and payment gateway integrations. The platform provides a seamless shopping experience from product discovery to secure checkout. By utilizing [Technology, e.g., Redux Toolkit or Zustand], I managed complex client-side state for the shopping cart and user sessions. The project demonstrates my ability to build consumer-facing applications that prioritize user experience and security.',
+    description: 'A modern e-commerce storefront featuring a functional shopping cart, secure checkout, and product filtering.',
     role: 'Frontend Developer',
     year: '2024',
     category: ['Frontend', 'Personal', 'E-Commerce'],
-    stack: ['React', 'Redux', 'Styled Components', 'Stripe API', 'Firebase'],
+    stack: ['React', 'Redux Toolkit', 'Tailwind CSS', 'Stripe API', 'Firebase'],
     status: 'Completed',
     featured: true,
     github: '[https://github.com/yourusername/ecommerce]',
     demo: '[https://your-ecommerce-demo.vercel.app]',
-    highlights: [
-      'Integrated Stripe API to facilitate secure, simulated payment processing and order management.',
-      'Engineered a highly responsive product filtering and search system, reducing product discovery time.',
-      'Implemented efficient client-side state management for the shopping cart to ensure persistence across sessions.',
-      'Leveraged Firebase for real-time inventory updates and user authentication.',
-    ],
+    problem: '[Explain the problem. e.g., I needed a challenging project to solidify my understanding of complex global state management and third-party API integration.]',
+    solution: '[Describe the solution. e.g., Built a responsive, accessible e-commerce prototype that handles complex state like cart management, user sessions, and simulated payment processing.]',
+    contribution: '[Detail your contribution. e.g., Designed and developed the entire frontend application from scratch, utilizing Redux for state and Firebase for mock authentication.]',
+    challenges: '[Mention a challenge. e.g., Ensuring the shopping cart state remained synchronized across different browser tabs and persisted through page refreshes.]',
+    learned: '[What did you learn? e.g., Mastered Redux Toolkit for predictable state transitions and learned how to securely integrate the Stripe payment gateway.]',
   },
   {
     id: 'task-management-dashboard',
     title: '[Task Management Dashboard]',
-    description:
-      'A productivity application enabling users to organize tasks, manage project boards, and track progress with interactive data visualization.',
-    longDescription:
-      'Created a comprehensive task management dashboard inspired by industry-leading productivity tools. This project was built to master complex UI interactions and data visualization in React. The application allows users to create tasks, organize them into Kanban boards, and view productivity metrics through interactive charts. I focused heavily on creating fluid drag-and-drop interactions and ensuring the application remains responsive across all devices.',
+    description: 'A productivity application enabling users to organize tasks, manage Kanban boards, and track progress.',
     role: 'Frontend Developer',
     year: '2024',
     category: ['Frontend', 'Personal', 'Dashboard'],
@@ -76,20 +70,16 @@ export const projects: Project[] = [
     featured: true,
     github: '[https://github.com/yourusername/task-dashboard]',
     demo: '[https://your-dashboard-demo.vercel.app]',
-    highlights: [
-      'Developed complex, performant drag-and-drop interactions for Kanban board task management.',
-      'Integrated Chart.js to provide users with interactive, visual insights into their productivity metrics.',
-      'Utilized Framer Motion to implement fluid micro-interactions and page transitions, enhancing overall UX.',
-      'Designed a deeply customizable, responsive UI system using Tailwind CSS.',
-    ],
+    problem: '[Explain the problem. e.g., Many task management apps feel sluggish or lack intuitive visual feedback during complex interactions like drag-and-drop.]',
+    solution: '[Describe the solution. e.g., Created a highly interactive Kanban dashboard focused on fluid animations, immediate visual feedback, and clear data visualization.]',
+    contribution: '[Detail your contribution. e.g., Implemented the drag-and-drop logic from scratch, integrated Chart.js for productivity metrics, and enforced strict type-safety with TypeScript.]',
+    challenges: '[Mention a challenge. e.g., Managing the complex nested state of columns and cards during a drag-and-drop event without causing unnecessary re-renders.]',
+    learned: '[What did you learn? e.g., Deepened my understanding of React performance optimization techniques (memoization) and advanced TypeScript generic typing.]',
   },
   {
     id: 'algorithm-visualizer',
     title: '[Algorithm Visualizer]',
-    description:
-      'An educational tool that visually demonstrates how popular sorting and pathfinding algorithms execute in real-time.',
-    longDescription:
-      'Built an interactive algorithm visualizer as an educational resource to help computer science students better understand fundamental algorithms. The application visually demonstrates the step-by-step execution of sorting algorithms (like Quick Sort and Merge Sort) and pathfinding algorithms (like Dijkstra\'s and A*). This project challenged me to manage complex application state and optimize rendering performance to handle rapid DOM updates without lagging.',
+    description: 'An educational tool that visually demonstrates how sorting and pathfinding algorithms execute in real-time.',
     role: 'Frontend Developer',
     year: '2023',
     category: ['Frontend', 'University', 'Educational'],
@@ -98,19 +88,16 @@ export const projects: Project[] = [
     featured: false,
     github: '[https://github.com/yourusername/algo-visualizer]',
     demo: '[https://your-algo-visualizer.vercel.app]',
-    highlights: [
-      'Implemented core CS algorithms from scratch, ensuring accurate visual representation of execution steps.',
-      'Optimized rendering loops to handle high-frequency UI updates during algorithm visualization.',
-      'Designed intuitive controls allowing users to adjust algorithm speed and dynamically generate new datasets.',
-    ],
+    problem: '[Explain the problem. e.g., Abstract algorithms are notoriously difficult for beginner computer science students to conceptualize and trace mentally.]',
+    solution: '[Describe the solution. e.g., Built a web-based visualization tool that steps through algorithm execution frame-by-frame, highlighting active elements in the DOM.]',
+    contribution: '[Detail your contribution. e.g., Implemented the core sorting logic (Merge, Quick, Bubble) and designed the timing mechanism to animate the DOM manipulations.]',
+    challenges: '[Mention a challenge. e.g., Synchronizing the asynchronous delays (setTimeout) with the synchronous algorithm loops to create a smooth animation effect.]',
+    learned: '[What did you learn? e.g., Solidified my foundational knowledge of Data Structures & Algorithms while gaining hands-on experience with native DOM manipulation.]',
   },
   {
     id: 'university-management-system',
     title: '[University Management System]',
-    description:
-      'A robust backend system designed to manage student records, course registrations, and faculty scheduling for a university environment.',
-    longDescription:
-      'Developed as part of the Database Management Systems coursework, this project focuses entirely on backend architecture and database design. I architected a normalized relational database capable of handling complex queries related to student enrollment, grade tracking, and course prerequisite validation. The backend API provides secure endpoints for administrative operations, emphasizing data integrity and efficient query performance.',
+    description: 'A robust backend system designed to manage student records, course registrations, and faculty scheduling.',
     role: 'Backend Developer',
     year: '2023',
     category: ['Backend', 'University', 'Database'],
@@ -118,10 +105,10 @@ export const projects: Project[] = [
     status: 'Completed',
     featured: false,
     github: '[https://github.com/yourusername/university-backend]',
-    highlights: [
-      'Designed a highly normalized MySQL database schema to ensure data integrity across multiple related entities.',
-      'Developed secure RESTful API endpoints with JWT-based authentication and role-based access control (RBAC).',
-      'Wrote complex SQL queries and stored procedures for generating academic transcripts and validating course prerequisites.',
-    ],
+    problem: '[Explain the problem. e.g., University administration required a normalized database system to prevent data anomalies during peak course registration periods.]',
+    solution: '[Describe the solution. e.g., Architected a relational database schema and built a secure REST API to handle CRUD operations for students, faculty, and courses.]',
+    contribution: '[Detail your contribution. e.g., Designed the Entity-Relationship (ER) diagram, wrote complex SQL queries, and implemented JWT-based role authorization.]',
+    challenges: '[Mention a challenge. e.g., Designing the schema to handle complex many-to-many relationships, such as students registering for multiple courses with prerequisites.]',
+    learned: '[What did you learn? e.g., Gained practical experience in database normalization (3NF), writing efficient SQL queries, and securing API endpoints.]',
   },
 ]

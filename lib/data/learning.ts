@@ -18,13 +18,23 @@ export type RoadmapPhase = {
 
 export const currentlyLearning: LearningItem[] = [
   {
+    id: 'programming-hero-fullstack',
+    topic: 'AI Driven Full Stack Web Engineer',
+    resource: 'Programming Hero (Structured Bootcamp)',
+    resourceType: 'Course',
+    progress: 85,
+    status: 'Active',
+    why: 'Pursuing a comprehensive, structured curriculum to bridge the gap between academic theory and industry-standard full-stack web development practices.',
+    startedAt: 'Jan 2025',
+  },
+  {
     id: 'nextjs-architecture',
     topic: 'Next.js App Router & Architecture',
     resource: 'Next.js Official Documentation & Vercel Blogs',
     resourceType: 'Docs',
     progress: 75,
     status: 'Active',
-    why: 'Aiming to deeply understand React Server Components, streaming, and advanced routing patterns for enterprise-scale applications.',
+    why: 'Aiming to deeply understand React Server Components, streaming, and advanced routing patterns to build performant web applications.',
     startedAt: 'May 2025',
   },
   {
@@ -34,7 +44,7 @@ export const currentlyLearning: LearningItem[] = [
     resourceType: 'Course',
     progress: 50,
     status: 'Active',
-    why: 'Transitioning from basic type definitions to mastering generics, mapped types, and complex type inference in large codebases.',
+    why: 'Transitioning from basic type definitions to mastering generics and complex type inference to write safer, self-documenting code.',
     startedAt: 'April 2025',
   },
   {

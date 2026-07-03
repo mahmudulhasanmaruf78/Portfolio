@@ -209,36 +209,65 @@ export default function ProjectsClient() {
 
               {/* Modal Body */}
               <div className="overflow-y-auto p-6 md:p-8">
-                <div className="prose prose-invert max-w-none">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 mt-0">
-                    Overview
-                  </h3>
-                  <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                    {selectedProject.longDescription}
-                  </p>
+                <div className="prose prose-invert max-w-none space-y-8">
+                  
+                  <section>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-3 mt-0 flex items-center gap-2">
+                      <span className="w-6 h-[1px] bg-accent/50"></span> The Problem
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {selectedProject.problem}
+                    </p>
+                  </section>
 
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
-                    Key Learnings & Features
-                  </h3>
-                  <ul className="space-y-3 mb-8">
-                    {selectedProject.highlights.map((highlight, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground text-sm">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60" />
-                        <span className="leading-relaxed">{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <section>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-3 flex items-center gap-2">
+                      <span className="w-6 h-[1px] bg-accent/50"></span> The Solution
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {selectedProject.solution}
+                    </p>
+                  </section>
 
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
-                    Technology Stack
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {selectedProject.stack.map((tech) => (
-                      <span key={tech} className="skill-pill py-1.5 px-3">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  <section>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-3 flex items-center gap-2">
+                      <span className="w-6 h-[1px] bg-surface-border"></span> My Contribution
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {selectedProject.contribution}
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-3 flex items-center gap-2">
+                      <span className="w-6 h-[1px] bg-surface-border"></span> Challenges Faced
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {selectedProject.challenges}
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-3 flex items-center gap-2">
+                      <span className="w-6 h-[1px] bg-emerald-400/50"></span> What I Learned
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      {selectedProject.learned}
+                    </p>
+                  </section>
+
+                  <section>
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4 pt-4 border-t border-surface-border">
+                      Technology Stack
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.stack.map((tech) => (
+                        <span key={tech} className="skill-pill py-1.5 px-3 bg-surface-elevated text-foreground border border-surface-border rounded-lg text-sm font-medium">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </section>
                 </div>
               </div>
 
