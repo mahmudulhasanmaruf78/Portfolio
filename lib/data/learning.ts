@@ -11,80 +11,80 @@ export type LearningItem = {
   startedAt: string
 }
 
-export type Roadmap = {
+export type RoadmapPhase = {
   quarter: string
   items: string[]
 }
 
 export const currentlyLearning: LearningItem[] = [
   {
-    id: 'nextjs-advanced',
-    topic: 'Next.js Advanced Patterns',
-    resource: 'Next.js Docs + Lee Robinson\'s Examples',
+    id: 'nextjs-architecture',
+    topic: 'Next.js App Router & Architecture',
+    resource: 'Next.js Official Documentation & Vercel Blogs',
     resourceType: 'Docs',
-    progress: 70,
+    progress: 75,
     status: 'Active',
-    why: 'I want to deeply understand server components, streaming, and parallel routes — not just use them.',
+    why: 'Aiming to deeply understand React Server Components, streaming, and advanced routing patterns for enterprise-scale applications.',
     startedAt: 'May 2025',
   },
   {
-    id: 'typescript-deep',
-    topic: 'TypeScript: Deep Types',
-    resource: 'Matt Pocock — Total TypeScript',
+    id: 'advanced-typescript',
+    topic: 'Advanced TypeScript Patterns',
+    resource: 'Total TypeScript by Matt Pocock',
     resourceType: 'Course',
-    progress: 45,
+    progress: 50,
     status: 'Active',
-    why: 'I can write TypeScript, but I want to understand generics, conditional types, and inference at a level that makes me useful in a real codebase.',
+    why: 'Transitioning from basic type definitions to mastering generics, mapped types, and complex type inference in large codebases.',
     startedAt: 'April 2025',
   },
   {
-    id: 'docker-basics',
-    topic: 'Docker & Containerisation',
-    resource: 'Docker Documentation + TechWorld with Nana',
+    id: 'docker-fundamentals',
+    topic: 'Docker & Containerization',
+    resource: 'TechWorld with Nana (YouTube) & Official Docs',
     resourceType: 'YouTube',
-    progress: 30,
+    progress: 35,
     status: 'Active',
-    why: 'Every job listing expects basic Docker knowledge. I want to understand the "why" before memorising commands.',
+    why: 'Containerization is an essential industry standard. I want to build a solid mental model of how images and containers function before automating deployments.',
     startedAt: 'June 2025',
   },
   {
-    id: 'dsa-patterns',
-    topic: 'DSA Problem Patterns',
-    resource: 'Blind 75 + NeetCode on LeetCode',
+    id: 'dsa-interview-prep',
+    topic: 'DSA & Interview Preparation',
+    resource: 'LeetCode (Blind 75 & NeetCode 150)',
     resourceType: 'Course',
-    progress: 55,
+    progress: 60,
     status: 'Active',
-    why: 'Preparing for technical interviews. Focusing on sliding window, two-pointer, BFS/DFS, and DP patterns.',
+    why: 'Actively preparing for technical interviews by focusing on pattern recognition (sliding window, two pointers, dynamic programming) rather than rote memorization.',
     startedAt: 'March 2025',
   },
 ]
 
-export const roadmap: Roadmap[] = [
+export const roadmap: RoadmapPhase[] = [
   {
     quarter: 'Q3 2025 (Current)',
     items: [
-      'Complete Total TypeScript',
-      'Finish Docker fundamentals',
-      'Reach 100 LeetCode problems solved',
-      'Ship final year project',
+      'Master advanced TypeScript concepts and strict type checking.',
+      'Attain fundamental proficiency with Docker and containerized workflows.',
+      'Solve 150+ algorithmic problems on LeetCode focusing on core patterns.',
+      'Architect and deploy the final-year capstone engineering project.',
     ],
   },
   {
     quarter: 'Q4 2025',
     items: [
-      'Learn GraphQL (Apollo Client + Server)',
-      'Build a full-stack project with tRPC',
-      'Set up CI/CD with GitHub Actions',
-      'Start contributing to an open-source project',
+      'Explore GraphQL implementations using Apollo Client and Server.',
+      'Develop a full-stack, end-to-end type-safe application utilizing tRPC.',
+      'Implement automated CI/CD pipelines using GitHub Actions.',
+      'Contribute meaningful pull requests to recognized open-source projects.',
     ],
   },
   {
     quarter: 'Q1 2026',
     items: [
-      'Deep dive into testing (Vitest + Playwright)',
-      'Learn Redis for caching',
-      'Explore edge computing (Cloudflare Workers)',
-      'Apply for internship / junior dev positions',
+      'Deep dive into automated testing methodologies (Vitest & Playwright).',
+      'Integrate Redis for advanced caching strategies in backend services.',
+      'Investigate edge computing paradigms with Cloudflare Workers.',
+      'Actively interview for full-time junior software engineering positions.',
     ],
   },
 ]

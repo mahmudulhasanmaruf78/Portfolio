@@ -1,78 +1,78 @@
 // lib/data/profile.ts
 
 export const profile = {
-  name: 'Rafi Hassan',
-  role: 'Final Year CS&E Student',
-  tagline: 'Aspiring Web Developer',
+  name: '[Your Name]',
+  role: 'Final-Year CS&E Student',
+  tagline: 'Aspiring Software Engineer & Web Developer',
   university: 'American International University–Bangladesh (AIUB)',
   department: 'Computer Science & Engineering',
   expectedGraduation: 'December 2025',
-  cgpa: '3.72',
+  cgpa: '[3.85]', // Replace with actual CGPA
   cgpaScale: '4.00',
   location: 'Dhaka, Bangladesh',
-  email: 'rafi.hassan@student.aiub.edu',
-  github: 'https://github.com/rafihassan',
-  linkedin: 'https://linkedin.com/in/rafihassan',
-  availability: 'Available for internship from January 2026',
+  email: '[your.email@example.com]',
+  github: '[https://github.com/yourusername]',
+  linkedin: '[https://linkedin.com/in/yourusername]',
+  availability: 'Available for internships and entry-level roles starting January 2026',
   bio: [
-    "I'm a final-year Computer Science & Engineering student at AIUB with a genuine curiosity for how things work on the web. My journey started with a single HTML file and an irresistible urge to understand what was happening behind every button click.",
-    "Over the past three years, I've moved from building static pages to architecting full-stack applications with React, Next.js, Node.js, and PostgreSQL. I care deeply about the craft — clean code, thoughtful UX, and software that actually solves problems.",
-    "I'm not trying to present myself as an expert. I'm a student who takes learning seriously, ships projects, and is hungry to grow inside a real engineering team. If you're looking for someone who will ask good questions, absorb feedback quickly, and show up with genuine enthusiasm — let's talk.",
+    "I'm a final-year Computer Science & Engineering student at AIUB with a deep passion for building robust and intuitive web applications. My journey into software development began with a curiosity for how complex systems are architected behind the scenes, and it quickly evolved into a dedicated pursuit of engineering excellence.",
+    "Over the course of my academic career, I've transitioned from grasping foundational programming concepts to architecting full-stack applications using modern technologies like React, Next.js, Node.js, and PostgreSQL. I care deeply about the craft of software development—writing clean, maintainable code, designing thoughtful user experiences, and building scalable solutions.",
+    "I approach engineering with a growth mindset. I'm not an expert yet, but I am a dedicated student who takes continuous learning seriously, ships functional projects, and is eager to contribute to a collaborative engineering team. I am actively seeking opportunities where I can absorb feedback, tackle challenging problems, and grow into a highly effective software engineer.",
   ],
   values: [
     {
       title: 'Continuous Learner',
       description:
-        'I spend time every day with documentation, courses, or side projects. Learning is the job, not a prerequisite.',
+        'Technology evolves rapidly. I dedicate time daily to exploring documentation, completing courses, and building side projects. I view learning as an ongoing responsibility, not a one-time task.',
     },
     {
-      title: 'Detail-Oriented',
+      title: 'Detail-Oriented Execution',
       description:
-        'Whether it\'s a pixel-perfect layout or consistent API naming, I notice the small things that make software feel polished.',
+        'From ensuring a responsive, pixel-perfect UI to maintaining consistent API naming conventions, I believe the quality of software is defined by meticulous attention to detail.',
     },
     {
-      title: 'Collaborative',
+      title: 'Collaborative Mindset',
       description:
-        'I thrive in team environments. I ask questions, communicate blockers early, and genuinely enjoy working through hard problems with others.',
+        'I thrive in environments where knowledge is shared. I proactively communicate blockers, ask clarifying questions, and genuinely enjoy collaborating with others to solve complex engineering challenges.',
     },
     {
-      title: 'Builder Mindset',
+      title: 'Bias for Action',
       description:
-        'I learn best by building. Every concept I study, I try to apply in a project — even if it\'s small.',
+        'I learn most effectively by building. Every new concept or architecture I study is immediately applied in a practical project, bridging the gap between theoretical knowledge and practical execution.',
     },
   ],
   funFacts: [
-    'I built my first website at age 16 — it was a Minecraft fan page.',
-    'I keep a second brain in Notion with 200+ dev notes and bookmarks.',
-    'I prefer dark mode everywhere and judge text editors by font kerning.',
-    'Outside of code, I play chess and read about cognitive psychology.',
+    'I built my first web project in high school—a simple HTML/CSS site that sparked my love for coding.',
+    'I maintain a comprehensive digital "second brain" with hundreds of development notes, code snippets, and architectural patterns.',
+    'I am an advocate for accessibility on the web, ensuring that the applications I build are usable by everyone.',
+    'When I am not writing code, I enjoy playing chess, exploring UI design trends, and reading about software architecture.',
   ],
   stats: {
-    projects: 6,
-    certificates: 8,
-    monthsLearning: 36,
-    cgpa: '3.72',
+    projects: 10, // Replace with your actual number
+    certificates: 5, // Replace with your actual number
+    monthsLearning: 36, // Replace with your actual number
+    cgpa: '[3.85]', // Replace with your actual CGPA
   },
   timeline: [
     {
       year: '2025',
-      title: 'Final Year Project',
-      description: 'Currently architecting a scalable full-stack application as my capstone project.',
+      title: 'Final Year Capstone Project',
+      description: 'Currently architecting a scalable, full-stack web application leveraging Next.js and PostgreSQL as my capstone engineering project.',
     },
     {
       year: '2024',
-      title: 'Advanced Web Development',
-      description: 'Mastered React and Next.js, shifting focus from static sites to complex web apps.',
+      title: 'Advanced Web Development Focus',
+      description: 'Deepened my expertise in the React ecosystem and modern backend integration, shifting from static site development to dynamic, data-driven web applications.',
     },
     {
       year: '2023',
-      title: 'Foundations of Programming',
-      description: 'Built a strong foundation in C++ and Object-Oriented Programming principles.',
+      title: 'Core Computer Science Foundations',
+      description: 'Built a rigorous foundation in Data Structures, Algorithms, and Object-Oriented Programming principles using C++ and Java.',
     },
     {
       year: '2022',
       title: 'Enrolled in CS&E at AIUB',
-      description: 'Started my formal education in Computer Science and Engineering.',
+      description: 'Commenced my formal education in Computer Science and Engineering, driven by a strong aptitude for logic and problem-solving.',
     },
   ],
 }

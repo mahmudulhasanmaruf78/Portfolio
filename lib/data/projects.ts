@@ -5,148 +5,123 @@ export type Project = {
   title: string
   description: string
   longDescription: string
-  stack: string[]
-  category: string[]
   role: string
-  highlights: string[]
-  github: string
-  demo: string | null
-  status: 'Completed' | 'In Progress' | 'Archived'
   year: string
+  category: string[]
+  stack: string[]
+  status: 'Completed' | 'In Progress' | 'Archived'
   featured: boolean
+  github?: string
+  demo?: string
+  highlights: string[]
 }
 
 export const projects: Project[] = [
   {
-    id: 'scholarhub',
-    title: 'ScholarHub',
+    id: 'capstone-project',
+    title: '[Capstone Project Name]',
     description:
-      'A full-stack student management system for universities — handles course registration, grade tracking, and semester scheduling.',
+      'A comprehensive full-stack platform designed to [solve a specific problem, e.g., streamline campus recruitment]. Built with modern web technologies for high performance and scalability.',
     longDescription:
-      'Built as the capstone project for my Database Systems course, ScholarHub is a multi-role web application serving students, faculty, and admins. It features a normalized relational database schema, role-based access control, and a React dashboard with real-time grade analytics.',
-    stack: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'JWT'],
-    category: ['Full Stack', 'Web App'],
-    role: 'Full Stack Developer (Team of 3)',
-    highlights: [
-      'Designed a normalized schema for 12 entities — reduced data redundancy significantly',
-      'Built JWT-based auth with role-based access (student, faculty, admin)',
-      'Implemented a real-time grade analytics dashboard with Chart.js',
-      'Followed RESTful API conventions throughout',
-    ],
-    github: 'https://github.com/rafihassan/scholarhub',
-    demo: null,
-    status: 'Completed',
-    year: '2024',
+      'This application serves as my final-year engineering capstone project. It addresses the inefficiencies in [specific domain] by providing a centralized, intuitive platform. I led the architectural design and full-stack implementation, ensuring the system is both performant and easily maintainable. The backend utilizes [Technology] to handle complex relational data, while the frontend delivers a seamless, responsive experience using [Technology].',
+    role: 'Full Stack Developer',
+    year: '2025',
+    category: ['Full Stack', 'University', 'Web App'],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Prisma'],
+    status: 'In Progress',
     featured: true,
+    github: '[https://github.com/yourusername/capstone]',
+    demo: '[https://your-capstone-demo.vercel.app]',
+    highlights: [
+      'Architected a robust relational database schema capable of handling concurrent user transactions.',
+      'Implemented secure authentication and role-based authorization flows.',
+      'Optimized frontend rendering strategies (Server-Side Rendering and Static Site Generation) to achieve high Lighthouse performance scores.',
+      'Designed a scalable component library using Tailwind CSS for consistent UI across the platform.',
+    ],
   },
   {
-    id: 'devshop',
-    title: 'DevShop',
+    id: 'ecommerce-platform',
+    title: '[E-Commerce Storefront]',
     description:
-      'A lightweight e-commerce storefront with product browsing, cart management, and a simulated checkout built with Next.js and TypeScript.',
+      'A modern e-commerce storefront featuring a fully functional shopping cart, secure checkout process, and an intuitive product filtering system.',
     longDescription:
-      'DevShop was my first serious Next.js project — I built it to understand SSR, ISR, and the App Router end to end. The product catalogue uses static generation for fast loads, and the cart state is managed with Zustand. No real payments — Stripe test mode only.',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Stripe (Test)', 'Vercel'],
-    category: ['Frontend', 'Full Stack'],
-    role: 'Solo Developer',
-    highlights: [
-      'Used Next.js ISR for product pages — sub-100ms TTFB on Vercel',
-      'Implemented cart persistence with localStorage + Zustand',
-      'Added Stripe test checkout with webhook simulation',
-      'Fully responsive — designed mobile-first',
-    ],
-    github: 'https://github.com/rafihassan/devshop',
-    demo: 'https://devshop-rafi.vercel.app',
-    status: 'Completed',
+      'Developed a modern e-commerce web application to deepen my understanding of state management and payment gateway integrations. The platform provides a seamless shopping experience from product discovery to secure checkout. By utilizing [Technology, e.g., Redux Toolkit or Zustand], I managed complex client-side state for the shopping cart and user sessions. The project demonstrates my ability to build consumer-facing applications that prioritize user experience and security.',
+    role: 'Frontend Developer',
     year: '2024',
+    category: ['Frontend', 'Personal', 'E-Commerce'],
+    stack: ['React', 'Redux', 'Styled Components', 'Stripe API', 'Firebase'],
+    status: 'Completed',
     featured: true,
+    github: '[https://github.com/yourusername/ecommerce]',
+    demo: '[https://your-ecommerce-demo.vercel.app]',
+    highlights: [
+      'Integrated Stripe API to facilitate secure, simulated payment processing and order management.',
+      'Engineered a highly responsive product filtering and search system, reducing product discovery time.',
+      'Implemented efficient client-side state management for the shopping cart to ensure persistence across sessions.',
+      'Leveraged Firebase for real-time inventory updates and user authentication.',
+    ],
   },
   {
-    id: 'taskflow',
-    title: 'TaskFlow',
+    id: 'task-management-dashboard',
+    title: '[Task Management Dashboard]',
     description:
-      'A Kanban-style project management board with drag-and-drop task management, team collaboration features, and activity logs.',
+      'A productivity application enabling users to organize tasks, manage project boards, and track progress with interactive data visualization.',
     longDescription:
-      'TaskFlow started as a simple to-do app and grew into a collaborative project board. I learned a great deal about optimistic UI updates, real-time state synchronization, and how to structure complex React component trees without prop drilling.',
-    stack: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS', 'dnd-kit'],
-    category: ['Frontend', 'Web App'],
-    role: 'Solo Developer',
-    highlights: [
-      'Implemented drag-and-drop with dnd-kit — accessible by keyboard too',
-      'Used Firestore real-time listeners for multi-user collaboration',
-      'Built an activity log system that tracks all board mutations',
-      'Optimistic UI updates for instant response feel',
-    ],
-    github: 'https://github.com/rafihassan/taskflow',
-    demo: 'https://taskflow-rafi.vercel.app',
-    status: 'Completed',
+      'Created a comprehensive task management dashboard inspired by industry-leading productivity tools. This project was built to master complex UI interactions and data visualization in React. The application allows users to create tasks, organize them into Kanban boards, and view productivity metrics through interactive charts. I focused heavily on creating fluid drag-and-drop interactions and ensuring the application remains responsive across all devices.',
+    role: 'Frontend Developer',
     year: '2024',
+    category: ['Frontend', 'Personal', 'Dashboard'],
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Chart.js'],
+    status: 'Completed',
     featured: true,
+    github: '[https://github.com/yourusername/task-dashboard]',
+    demo: '[https://your-dashboard-demo.vercel.app]',
+    highlights: [
+      'Developed complex, performant drag-and-drop interactions for Kanban board task management.',
+      'Integrated Chart.js to provide users with interactive, visual insights into their productivity metrics.',
+      'Utilized Framer Motion to implement fluid micro-interactions and page transitions, enhancing overall UX.',
+      'Designed a deeply customizable, responsive UI system using Tailwind CSS.',
+    ],
   },
   {
-    id: 'weatherwise',
-    title: 'WeatherWise',
+    id: 'algorithm-visualizer',
+    title: '[Algorithm Visualizer]',
     description:
-      'A weather dashboard that visualises 7-day forecasts, hourly charts, and air quality indices using the OpenWeather API.',
+      'An educational tool that visually demonstrates how popular sorting and pathfinding algorithms execute in real-time.',
     longDescription:
-      'A deep-dive into API integration, data visualisation, and working with asynchronous JavaScript. WeatherWise fetches geolocation data, maps it to weather forecasts, and displays everything in an accessible, clean interface.',
-    stack: ['React', 'TypeScript', 'Recharts', 'OpenWeather API', 'CSS Modules'],
-    category: ['Frontend', 'API Integration'],
-    role: 'Solo Developer',
-    highlights: [
-      'Integrated OpenWeather One Call API for hourly and weekly data',
-      'Built responsive charts with Recharts for temperature and humidity trends',
-      'Used browser Geolocation API with a manual city search fallback',
-      'Reduced API calls with a 10-minute client-side cache',
-    ],
-    github: 'https://github.com/rafihassan/weatherwise',
-    demo: 'https://weatherwise-rafi.vercel.app',
+      'Built an interactive algorithm visualizer as an educational resource to help computer science students better understand fundamental algorithms. The application visually demonstrates the step-by-step execution of sorting algorithms (like Quick Sort and Merge Sort) and pathfinding algorithms (like Dijkstra\'s and A*). This project challenged me to manage complex application state and optimize rendering performance to handle rapid DOM updates without lagging.',
+    role: 'Frontend Developer',
+    year: '2023',
+    category: ['Frontend', 'University', 'Educational'],
+    stack: ['JavaScript', 'HTML5', 'CSS3', 'Algorithms'],
     status: 'Completed',
-    year: '2023',
     featured: false,
+    github: '[https://github.com/yourusername/algo-visualizer]',
+    demo: '[https://your-algo-visualizer.vercel.app]',
+    highlights: [
+      'Implemented core CS algorithms from scratch, ensuring accurate visual representation of execution steps.',
+      'Optimized rendering loops to handle high-frequency UI updates during algorithm visualization.',
+      'Designed intuitive controls allowing users to adjust algorithm speed and dynamically generate new datasets.',
+    ],
   },
   {
-    id: 'blogcms',
-    title: 'BlogCMS',
+    id: 'university-management-system',
+    title: '[University Management System]',
     description:
-      'A headless CMS-powered blog platform with markdown authoring, tagging, search, and RSS feed generation.',
+      'A robust backend system designed to manage student records, course registrations, and faculty scheduling for a university environment.',
     longDescription:
-      'An exploration of the Jamstack architecture and headless CMS concepts. Content is authored in Contentful, transformed at build time with Next.js, and served as static HTML. Taught me a lot about content modelling, build pipelines, and static site generation.',
-    stack: ['Next.js', 'TypeScript', 'Contentful', 'Tailwind CSS', 'next-mdx-remote'],
-    category: ['Full Stack', 'CMS'],
-    role: 'Solo Developer',
-    highlights: [
-      'Built a content model in Contentful for posts, tags, and authors',
-      'Implemented full-text search with a client-side index (FlexSearch)',
-      'Generated RSS feed at build time for feed reader compatibility',
-      'Added OG image generation per post using @vercel/og',
-    ],
-    github: 'https://github.com/rafihassan/blogcms',
-    demo: null,
-    status: 'Archived',
+      'Developed as part of the Database Management Systems coursework, this project focuses entirely on backend architecture and database design. I architected a normalized relational database capable of handling complex queries related to student enrollment, grade tracking, and course prerequisite validation. The backend API provides secure endpoints for administrative operations, emphasizing data integrity and efficient query performance.',
+    role: 'Backend Developer',
     year: '2023',
-    featured: false,
-  },
-  {
-    id: 'expensetracker',
-    title: 'ExpenseTracker',
-    description:
-      'A personal finance tracker with income/expense logging, category breakdowns, and monthly trend visualisation.',
-    longDescription:
-      'My first React + local storage project that evolved into a proper app with indexed data, chart visualisations, and CSV export. This taught me state management fundamentals and data modelling without a backend.',
-    stack: ['React', 'JavaScript', 'Chart.js', 'CSS Modules'],
-    category: ['Frontend', 'Web App'],
-    role: 'Solo Developer',
-    highlights: [
-      'Built from scratch without any component library',
-      'Implemented CSV export for expense data',
-      'Monthly trend charts with Chart.js',
-      'All data persisted in localStorage with versioned schema',
-    ],
-    github: 'https://github.com/rafihassan/expense-tracker',
-    demo: 'https://expensetracker-rafi.vercel.app',
+    category: ['Backend', 'University', 'Database'],
+    stack: ['Node.js', 'Express', 'MySQL', 'JWT'],
     status: 'Completed',
-    year: '2023',
     featured: false,
+    github: '[https://github.com/yourusername/university-backend]',
+    highlights: [
+      'Designed a highly normalized MySQL database schema to ensure data integrity across multiple related entities.',
+      'Developed secure RESTful API endpoints with JWT-based authentication and role-based access control (RBAC).',
+      'Wrote complex SQL queries and stored procedures for generating academic transcripts and validating course prerequisites.',
+    ],
   },
 ]

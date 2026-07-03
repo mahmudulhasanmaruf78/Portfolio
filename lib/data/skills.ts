@@ -5,7 +5,6 @@ export type SkillLevel = 'Learning' | 'Familiar' | 'Confident'
 export type Skill = {
   name: string
   level: SkillLevel
-  icon?: string
 }
 
 export type SkillCategory = {
@@ -14,66 +13,61 @@ export type SkillCategory = {
   skills: Skill[]
 }
 
+export const levelColors: Record<SkillLevel, 'default' | 'success' | 'warning' | 'error' | 'info' | 'purple'> = {
+  Learning: 'warning',
+  Familiar: 'info',
+  Confident: 'success',
+}
+
 export const skillCategories: SkillCategory[] = [
   {
-    category: 'Frontend',
-    description: 'Building interfaces and interactive user experiences',
+    category: 'Frontend Development',
+    description: 'Technologies I use to build responsive, interactive user interfaces.',
     skills: [
-      { name: 'HTML & CSS', level: 'Confident' },
-      { name: 'JavaScript (ES2022+)', level: 'Confident' },
-      { name: 'TypeScript', level: 'Familiar' },
-      { name: 'React', level: 'Confident' },
-      { name: 'Next.js', level: 'Familiar' },
+      { name: 'React.js', level: 'Confident' },
+      { name: 'Next.js (App Router)', level: 'Confident' },
+      { name: 'TypeScript', level: 'Confident' },
+      { name: 'JavaScript (ES6+)', level: 'Confident' },
       { name: 'Tailwind CSS', level: 'Confident' },
       { name: 'Framer Motion', level: 'Familiar' },
-      { name: 'React Hook Form', level: 'Familiar' },
-      { name: 'Zustand', level: 'Familiar' },
+      { name: 'HTML5 & CSS3', level: 'Confident' },
     ],
   },
   {
-    category: 'Backend',
-    description: 'Server-side logic, databases, and APIs',
+    category: 'Backend & Databases',
+    description: 'Tools for building APIs, managing data, and server-side logic.',
     skills: [
       { name: 'Node.js', level: 'Familiar' },
       { name: 'Express.js', level: 'Familiar' },
-      { name: 'REST API Design', level: 'Familiar' },
       { name: 'PostgreSQL', level: 'Familiar' },
-      { name: 'MySQL', level: 'Familiar' },
-      { name: 'Firebase / Firestore', level: 'Familiar' },
-      { name: 'Prisma ORM', level: 'Learning' },
-      { name: 'GraphQL', level: 'Learning' },
+      { name: 'MySQL', level: 'Confident' },
+      { name: 'MongoDB', level: 'Learning' },
+      { name: 'Prisma ORM', level: 'Familiar' },
+      { name: 'REST APIs', level: 'Confident' },
     ],
   },
   {
-    category: 'Tools & Workflow',
-    description: 'Development tools, version control, and deployment',
+    category: 'Languages & Core CS',
+    description: 'Foundational programming languages and computer science concepts.',
+    skills: [
+      { name: 'C++', level: 'Confident' },
+      { name: 'Java', level: 'Familiar' },
+      { name: 'Python', level: 'Familiar' },
+      { name: 'Data Structures', level: 'Confident' },
+      { name: 'Algorithms', level: 'Familiar' },
+      { name: 'Object-Oriented Programming', level: 'Confident' },
+    ],
+  },
+  {
+    category: 'Tools & Architecture',
+    description: 'Software for version control, deployment, and system design.',
     skills: [
       { name: 'Git & GitHub', level: 'Confident' },
-      { name: 'VS Code', level: 'Confident' },
-      { name: 'Vercel', level: 'Familiar' },
-      { name: 'Figma', level: 'Familiar' },
+      { name: 'Vercel', level: 'Confident' },
       { name: 'Postman', level: 'Familiar' },
-      { name: 'Docker (basics)', level: 'Learning' },
-      { name: 'Linux CLI', level: 'Familiar' },
-      { name: 'npm / pnpm', level: 'Confident' },
-    ],
-  },
-  {
-    category: 'CS Fundamentals',
-    description: 'Academic foundations and computer science core',
-    skills: [
-      { name: 'Data Structures & Algorithms', level: 'Familiar' },
-      { name: 'Object-Oriented Programming', level: 'Confident' },
-      { name: 'Database Systems', level: 'Familiar' },
-      { name: 'Operating Systems', level: 'Familiar' },
-      { name: 'Computer Networks', level: 'Familiar' },
-      { name: 'Software Engineering', level: 'Familiar' },
+      { name: 'Docker', level: 'Learning' },
+      { name: 'Figma', level: 'Familiar' },
+      { name: 'System Design Basics', level: 'Learning' },
     ],
   },
 ]
-
-export const levelColors: Record<SkillLevel, string> = {
-  Learning: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
-  Familiar: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
-  Confident: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
-}

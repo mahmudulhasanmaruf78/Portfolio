@@ -5,90 +5,60 @@ export type Certificate = {
   title: string
   issuer: string
   date: string
-  credentialUrl: string
-  category: string
   description: string
+  credentialUrl?: string
+  category: string
 }
 
 export const certificates: Certificate[] = [
   {
-    id: 'meta-frontend',
-    title: 'Meta Front-End Developer Professional Certificate',
-    issuer: 'Meta / Coursera',
-    date: 'March 2024',
-    credentialUrl: 'https://coursera.org/verify/professional-cert/example',
+    id: 'cert-1',
+    title: '[Name of Certification, e.g., Meta Front-End Developer Professional Certificate]',
+    issuer: '[Issuing Organization, e.g., Coursera / Meta]',
+    date: '[Month Year]',
+    description:
+      'A comprehensive program covering the fundamentals of web development, advanced React paradigms, and UX/UI principles, culminating in a capstone project.',
+    credentialUrl: '[https://coursera.org/verify/professional-cert/your-id]',
     category: 'Web Development',
-    description:
-      '9-course series covering HTML, CSS, JavaScript, React, and version control. Built a capstone project as a front-end developer.',
   },
   {
-    id: 'cs50x',
-    title: 'CS50x: Introduction to Computer Science',
-    issuer: 'Harvard University / edX',
-    date: 'November 2023',
-    credentialUrl: 'https://cs50.harvard.edu/certificates/example',
-    category: 'Computer Science',
+    id: 'cert-2',
+    title: '[Name of Certification, e.g., JavaScript (Basic) Certificate]',
+    issuer: '[Issuing Organization, e.g., HackerRank]',
+    date: '[Month Year]',
     description:
-      "Harvard's legendary intro course covering C, Python, SQL, data structures, and web development. Completed all problem sets and a final project.",
-  },
-  {
-    id: 'fcc-js',
-    title: 'JavaScript Algorithms and Data Structures',
-    issuer: 'freeCodeCamp',
-    date: 'August 2023',
-    credentialUrl: 'https://freecodecamp.org/certification/rafihassan/javascript',
+      'Successfully passed the assessment demonstrating proficiency in core JavaScript concepts, including functions, asynchronous programming, and DOM manipulation.',
+    credentialUrl: '[https://hackerrank.com/certificates/your-id]',
     category: 'Programming',
-    description:
-      '300+ hours of JavaScript fundamentals, ES6+, regular expressions, debugging, data structures, and algorithm scripting.',
   },
   {
-    id: 'fcc-responsive',
-    title: 'Responsive Web Design',
-    issuer: 'freeCodeCamp',
-    date: 'May 2023',
-    credentialUrl: 'https://freecodecamp.org/certification/rafihassan/responsive-web-design',
+    id: 'cert-3',
+    title: '[Name of Certification, e.g., Responsive Web Design]',
+    issuer: '[Issuing Organization, e.g., freeCodeCamp]',
+    date: '[Month Year]',
+    description:
+      'Completed approximately 300 hours of coursework focused on building accessible, responsive web layouts using modern HTML5, CSS3, and Flexbox/Grid techniques.',
+    credentialUrl: '[https://freecodecamp.org/certification/yourusername/responsive-web-design]',
     category: 'Web Development',
-    description:
-      'Completed 300 hours of HTML, CSS, CSS Flexbox, CSS Grid, responsive design principles, and 5 certification projects.',
   },
   {
-    id: 'google-ux',
-    title: 'Google UX Design Professional Certificate',
-    issuer: 'Google / Coursera',
-    date: 'January 2024',
-    credentialUrl: 'https://coursera.org/verify/professional-cert/google-ux',
-    category: 'Design',
+    id: 'cert-4',
+    title: '[Name of Certification, e.g., Crash Course on Python]',
+    issuer: '[Issuing Organization, e.g., Google / Coursera]',
+    date: '[Month Year]',
     description:
-      "7-course certificate covering UX research, wireframing, prototyping in Figma, and usability testing. Informed my understanding of design-developer collaboration.",
+      'Gained foundational knowledge of Python syntax, data structures, and object-oriented programming concepts through hands-on scripting exercises.',
+    credentialUrl: '[https://coursera.org/verify/your-id]',
+    category: 'Programming',
   },
   {
-    id: 'nextjs-vercel',
-    title: 'Next.js Foundation & App Router',
-    issuer: 'Vercel / Next.js Learn',
-    date: 'June 2024',
-    credentialUrl: 'https://nextjs.org/learn/certificate/example',
-    category: 'Web Development',
+    id: 'cert-5',
+    title: '[Name of Certification, e.g., SQL (Basic) Certificate]',
+    issuer: '[Issuing Organization, e.g., HackerRank]',
+    date: '[Month Year]',
     description:
-      'Official Next.js learning path — covered the App Router, server components, streaming, data fetching patterns, and deployment on Vercel.',
-  },
-  {
-    id: 'git-github',
-    title: 'Git and GitHub Fundamentals',
-    issuer: 'GitHub / Microsoft Learn',
-    date: 'February 2023',
-    credentialUrl: 'https://learn.microsoft.com/en-us/training/achievements/example',
-    category: 'Tools',
-    description:
-      'Covered version control fundamentals, branching strategies, pull request workflows, GitHub Actions basics, and collaborative development patterns.',
-  },
-  {
-    id: 'sql-basics',
-    title: 'SQL for Data Science',
-    issuer: 'UC Davis / Coursera',
-    date: 'September 2023',
-    credentialUrl: 'https://coursera.org/verify/sql-example',
+      'Demonstrated competence in writing SQL queries, performing complex joins, and managing relational data through practical assessments.',
+    credentialUrl: '[https://hackerrank.com/certificates/your-id]',
     category: 'Database',
-    description:
-      'Foundational SQL course covering queries, joins, subqueries, aggregation, and data manipulation. Complemented my Database Systems coursework at AIUB.',
   },
 ]
