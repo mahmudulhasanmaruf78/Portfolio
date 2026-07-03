@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import {
   ArrowRight,
@@ -54,6 +54,9 @@ export default function HomePage() {
   const reverseX = useTransform(smoothX, (v) => -v)
   const reverseY = useTransform(smoothY, (v) => -v)
 
+  const shouldReduceMotion = useReducedMotion()
+  const yOffset = shouldReduceMotion ? 0 : 15
+
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
     const x = (e.clientX - left) / width - 0.5
@@ -85,87 +88,155 @@ export default function HomePage() {
           style={{ y, opacity }}
           className="container-custom relative z-10"
         >
-          <div className="max-w-[800px]">
+          <motion.div 
+            className="max-w-[800px]"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.1,
+                }
+              }
+            }}
+          >
             {/* Status Pill */}
-            <FadeIn delay={0.1}>
-              <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-surface-border bg-surface-elevated/40 py-1.5 pl-2 pr-4 text-xs font-medium text-muted-foreground backdrop-blur-md shadow-card">
-                <span className="flex h-6 items-center justify-center rounded-full bg-emerald-500/15 px-2.5">
-                  <span className="status-dot text-emerald-400 mr-1.5" />
-                  <span className="text-emerald-400 font-semibold tracking-wide uppercase text-[10px]">Available</span>
-                </span>
-                <span>Internships starting Jan 2026</span>
-              </div>
-            </FadeIn>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: yOffset },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] } }
+              }}
+              className="mb-8 inline-flex items-center gap-3 rounded-full border border-surface-border bg-surface-elevated/40 py-1.5 pl-2 pr-4 text-xs font-medium text-muted-foreground backdrop-blur-md shadow-card"
+            >
+              <span className="flex h-6 items-center justify-center rounded-full bg-emerald-500/15 px-2.5">
+                <span className="status-dot text-emerald-400 mr-1.5" />
+                <span className="text-emerald-400 font-semibold tracking-wide uppercase text-[10px]">Available</span>
+              </span>
+              <span>Internships starting Jan 2026</span>
+            </motion.div>
 
-            {/* Main Headline */}
-            <FadeIn delay={0.2} duration={0.8}>
-              <h1 className="text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl md:text-7xl lg:text-[5rem] leading-[1.05]">
-                <span className="block text-muted-foreground text-2xl sm:text-3xl md:text-5xl mb-2 font-medium tracking-tight">Hi, I&apos;m Rafi Hassan.</span>
-                I build clean, modern <br className="hidden md:block" />
-                <span className="text-gradient pr-2">web experiences.</span>
-              </h1>
-            </FadeIn>
+            {/* Main Headline - Reveal line by line */}
+            <h1 className="text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl md:text-7xl lg:text-[5rem] leading-[1.05]">
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  variants={{
+                    hidden: { y: shouldReduceMotion ? 0 : "100%", opacity: shouldReduceMotion ? 0 : 1 },
+                    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] } }
+                  }}
+                  className="block text-muted-foreground text-2xl sm:text-3xl md:text-5xl mb-2 font-medium tracking-tight"
+                >
+                  Hi, I&apos;m Rafi Hassan.
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  variants={{
+                    hidden: { y: shouldReduceMotion ? 0 : "100%", opacity: shouldReduceMotion ? 0 : 1 },
+                    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] } }
+                  }}
+                  className="block"
+                >
+                  I build clean, modern
+                </motion.span>
+              </span>
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  variants={{
+                    hidden: { y: shouldReduceMotion ? 0 : "100%", opacity: shouldReduceMotion ? 0 : 1 },
+                    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] } }
+                  }}
+                  className="block text-gradient pr-2"
+                >
+                  web experiences.
+                </motion.span>
+              </span>
+            </h1>
 
             {/* Description */}
-            <FadeIn delay={0.3} duration={0.8}>
-              <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-[1.6]">
-                Final Year CS&E Student at <strong className="text-foreground font-semibold">AIUB</strong>. 
-                Passionate about frontend architecture, responsive design, and writing code that scales. 
-                Seeking my first engineering role.
-              </p>
-            </FadeIn>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: yOffset },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] } }
+              }}
+              className="mt-8 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-[1.6]"
+            >
+              Final Year CS&E Student at <strong className="text-foreground font-semibold">AIUB</strong>. 
+              Passionate about frontend architecture, responsive design, and writing code that scales. 
+              Seeking my first engineering role.
+            </motion.p>
 
             {/* Tech stack */}
-            <FadeIn delay={0.4} duration={0.8}>
-              <div className="mt-8 flex flex-wrap items-center gap-2">
-                <span className="text-sm text-muted-foreground mr-2 font-medium">Core Stack:</span>
-                {techStack.map((tech) => (
-                  <span key={tech} className="tag">{tech}</span>
-                ))}
-              </div>
-            </FadeIn>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: yOffset },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] } }
+              }}
+              className="mt-8 flex flex-wrap items-center gap-2"
+            >
+              <span className="text-sm text-muted-foreground mr-2 font-medium">Core Stack:</span>
+              {techStack.map((tech) => (
+                <span key={tech} className="tag">{tech}</span>
+              ))}
+            </motion.div>
 
             {/* CTAs */}
-            <FadeIn delay={0.5} duration={0.8}>
-              <div className="mt-12 flex flex-wrap items-center gap-4">
-                <Button href="/projects" size="lg" className="group">
-                  View My Work 
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Button>
-                <Button href="/contact" variant="secondary" size="lg">
-                  Get in Touch
-                </Button>
-              </div>
-            </FadeIn>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: yOffset },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] } }
+              }}
+              className="mt-12 flex flex-wrap items-center gap-4"
+            >
+              <Button href="/projects" size="lg" className="group">
+                View My Work 
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Button href="/contact" variant="secondary" size="lg">
+                Get in Touch
+              </Button>
+            </motion.div>
 
             {/* Social Links */}
-            <FadeIn delay={0.6} duration={0.8}>
-              <div className="mt-14 flex items-center gap-6">
-                <a
-                  href={SOCIAL_LINKS.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: yOffset },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] } }
+              }}
+              className="mt-14 flex items-center gap-6"
+            >
+              <a
+                href={SOCIAL_LINKS.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <motion.div 
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border shadow-card transition-all group-hover:border-white/20 group-hover:bg-surface-hover"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border shadow-card transition-all group-hover:border-white/20 group-hover:bg-surface-hover">
-                    <GithubIcon size={14} />
-                  </div>
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href={SOCIAL_LINKS.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  <GithubIcon size={14} />
+                </motion.div>
+                <span>GitHub</span>
+              </a>
+              <a
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <motion.div 
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: -4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border shadow-card transition-all group-hover:border-accent/30 group-hover:text-accent group-hover:bg-accent/5"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border shadow-card transition-all group-hover:border-accent/30 group-hover:text-accent group-hover:bg-accent/5">
-                    <LinkedinIcon size={14} />
-                  </div>
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-            </FadeIn>
-          </div>
+                  <LinkedinIcon size={14} />
+                </motion.div>
+                <span>LinkedIn</span>
+              </a>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* Scroll Indicator */}

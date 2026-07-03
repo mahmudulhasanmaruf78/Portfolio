@@ -2,13 +2,15 @@ import Link from 'next/link'
 import { ArrowUpRight, Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants'
+import { FadeIn } from '@/components/ui/Animations'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="border-t border-surface-border bg-surface/30">
-      <div className="container-custom py-12 md:py-16">
+      <FadeIn direction="none" duration={0.8} delay={0.1}>
+        <div className="container-custom py-12 md:py-16">
         <div className="grid gap-10 lg:grid-cols-5">
           {/* Brand & Bio */}
           <div className="lg:col-span-2">
@@ -127,6 +129,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  )
+    </FadeIn>
+  </footer>
+)
 }

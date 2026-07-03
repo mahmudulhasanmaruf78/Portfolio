@@ -82,12 +82,17 @@ export default function SkillsClient() {
                   <p className="text-sm text-muted-foreground md:pb-1">{category.description}</p>
                 </div>
                 
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <StaggerContainer className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {category.skills.map((skill) => {
                     const percentage = skill.level === 'Confident' ? 90 : skill.level === 'Familiar' ? 65 : 35
                     return (
-                      <div
+                      <motion.div
                         key={skill.name}
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.97, y: 8 },
+                          visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] } }
+                        }}
+                        whileHover={{ y: -4 }}
                         className="group flex flex-col p-4 rounded-xl border border-surface-border bg-surface shadow-sm transition-all duration-200 hover:border-white/20 hover:bg-surface-hover hover:shadow-card-hover"
                       >
                         <div className="flex items-center justify-between mb-3">
@@ -105,10 +110,10 @@ export default function SkillsClient() {
                             className="h-full bg-accent/80 rounded-full"
                           />
                         </div>
-                      </div>
+                      </motion.div>
                     )
                   })}
-                </div>
+                </StaggerContainer>
               </div>
             ))}
           </motion.div>

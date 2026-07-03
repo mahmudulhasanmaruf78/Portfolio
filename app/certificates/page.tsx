@@ -27,9 +27,9 @@ function SpotlightCard({
     mouseX.set(clientX - left)
     mouseY.set(clientY - top)
   }
-
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -4 }}
       className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-surface border border-surface-border cursor-pointer transition-all duration-500 hover:border-white/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       onMouseMove={handleMouseMove}
       onClick={onClick}
@@ -50,7 +50,7 @@ function SpotlightCard({
         }}
       />
       {children}
-    </div>
+    </motion.div>
   )
 }
 

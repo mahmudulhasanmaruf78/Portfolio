@@ -103,7 +103,7 @@ export default function EducationPage() {
           <StaggerItem>
             <div className="grid sm:grid-cols-2 gap-6">
               {secondary.map((school, i) => (
-                <div key={i} className="card p-6 md:p-8 bg-surface-elevated/20">
+                <div key={i} className="card-hover p-6 md:p-8 bg-surface-elevated/20">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface border border-surface-border text-muted-foreground">
                       <Book size={18} />

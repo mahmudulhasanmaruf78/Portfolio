@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
@@ -13,6 +13,8 @@ export function Navbar() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [hoveredLink, setHoveredLink] = useState<number | null>(null)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +44,10 @@ export function Navbar() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98], delay: 0.15 }}
         className={cn(
           'fixed inset-x-0 top-0 z-40 transition-all duration-300',
           isScrolled
@@ -63,13 +68,17 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1 bg-surface-elevated/40 rounded-full px-2 py-1.5 border border-surface-border/50 backdrop-blur-sm shadow-inner-highlight">
-            {NAV_LINKS.map((link) => {
+          <nav 
+            className="hidden md:flex items-center gap-1 bg-surface-elevated/40 rounded-full px-2 py-1.5 border border-surface-border/50 backdrop-blur-sm shadow-inner-highlight"
+            onMouseLeave={() => setHoveredLink(null)}
+          >
+            {NAV_LINKS.map((link, idx) => {
               const isActive = pathname === link.href
               return (
                 <Link
                   key={link.label}
                   href={link.href}
+                  onMouseEnter={() => setHoveredLink(idx)}
                   className={cn(
                     'relative px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-full',
                     isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
@@ -83,6 +92,13 @@ export function Navbar() {
                     />
                   )}
                   <span className="relative z-10">{link.label}</span>
+                  {hoveredLink === idx && !isActive && !shouldReduceMotion && (
+                    <motion.span
+                      layoutId="nav-hover-underline"
+                      className="absolute bottom-1.5 left-3.5 right-3.5 h-[1.5px] bg-accent/60"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
                 </Link>
               )
             })}
@@ -106,7 +122,7 @@ export function Navbar() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
