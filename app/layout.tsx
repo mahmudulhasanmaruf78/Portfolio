@@ -4,6 +4,10 @@ import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SITE_META } from '@/lib/constants'
+import { ScrollProgress } from '@/components/ui/ScrollProgress'
+import { BackToTop } from '@/components/ui/BackToTop'
+import { ThemeProvider } from '@/contexts/ThemeContext'
+import { AuroraBackground } from '@/components/ui/AuroraBackground'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -55,28 +59,32 @@ export const metadata: Metadata = {
   },
 }
 
-import { ScrollProgress } from '@/components/ui/ScrollProgress'
-import { BackToTop } from '@/components/ui/BackToTop'
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    // `dark` class here = default aurora theme on first paint (before client JS runs)
+    <html lang="en" className={`${inter.variable} dark`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="min-h-dvh bg-background text-foreground antialiased relative">
-        <ScrollProgress />
-        <Navbar />
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <BackToTop />
+        <ThemeProvider>
+          {/* Aurora gradient blobs — fixed behind all content, dark-mode only */}
+          <AuroraBackground />
+
+          <ScrollProgress />
+          <Navbar />
+          <main id="main-content" tabIndex={-1} className="relative z-10">
+            {children}
+          </main>
+          <Footer />
+          <BackToTop />
+        </ThemeProvider>
       </body>
     </html>
   )
 }
+
