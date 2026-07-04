@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { NAV_LINKS, SITE_META, SOCIAL_LINKS } from '@/lib/constants'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -105,13 +106,21 @@ export function Navbar() {
           </nav>
 
           {/* Right Actions / Mobile Toggle */}
-          <div className="flex items-center gap-4 z-50">
+          <div className="flex items-center gap-2 z-50">
+            {/* Theme toggle — desktop */}
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
+
             <Link
               href="/contact"
               className="hidden md:inline-flex h-8 items-center justify-center rounded-lg bg-foreground px-4 text-xs font-medium text-background transition-colors hover:bg-foreground/90 active:scale-95"
             >
               Hire Me
             </Link>
+
+            {/* Theme toggle — visible on mobile too */}
+            <ThemeToggle className="md:hidden" />
 
             <button
               className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-surface-border bg-surface text-foreground transition-colors hover:bg-surface-hover active:scale-95"
