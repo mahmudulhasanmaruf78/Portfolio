@@ -21,7 +21,7 @@ export function Footer() {
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-surface border border-surface-border shadow-card">
                 {SITE_META.name[0]}
               </div>
-              <span>Mahmudul Hasan Maruf</span>
+              <span>{SITE_META.name}</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
               Final-year CS&E student building premium web applications. Passionate about interfaces, performance, and clean code.

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { SOCIAL_LINKS } from '@/lib/constants'
@@ -11,18 +10,12 @@ import { Section, SectionHeader } from '@/components/layout/Section'
 import { FadeIn } from '@/components/ui/Animations'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
-
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+import { contactSchema, type ContactFormData } from '@/lib/contact'
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   const {
     register,
@@ -47,12 +40,14 @@ export default function ContactPage() {
       }
 
       setIsSuccess(true)
+      setIsError(false)
       reset()
       // Reset success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000)
     } catch (error) {
       console.error(error)
-      alert('There was an error sending your message. Please try again.')
+      setIsError(true)
+      setTimeout(() => setIsError(false), 6000)
     } finally {
       setIsSubmitting(false)
     }
@@ -141,7 +136,21 @@ export default function ContactPage() {
               
               <h3 className="text-xl font-semibold text-foreground mb-6 relative z-10">Send a message</h3>
 
+              {/* aria-live region announces validation errors and status to screen readers */}
+              <div aria-live="polite" aria-atomic="true" className="sr-only">
+                {errors.name && <span>{errors.name.message}</span>}
+                {errors.email && <span>{errors.email.message}</span>}
+                {errors.message && <span>{errors.message.message}</span>}
+                {isSuccess && <span>Your message was sent successfully!</span>}
+                {isError && <span>Failed to send message. Please try again.</span>}
+              </div>
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative z-10">
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="company">Company</label>
+                  <input id="company" tabIndex={-1} autoComplete="off" {...register('company')} />
+                </div>
+
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-foreground">
@@ -226,6 +235,12 @@ export default function ContactPage() {
                 {isSuccess && (
                   <p className="text-sm font-medium text-emerald-400 mt-3 animate-in fade-in slide-in-from-bottom-2">
                     Thanks for reaching out! I'll get back to you soon.
+                  </p>
+                )}
+
+                {isError && (
+                  <p className="flex items-center gap-1.5 text-sm font-medium text-red-400 mt-3 animate-in fade-in slide-in-from-bottom-2">
+                    <AlertCircle size={14} /> Something went wrong. Please try again or email me directly.
                   </p>
                 )}
               </form>

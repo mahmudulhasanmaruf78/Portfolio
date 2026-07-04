@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, MouseEvent } from 'react'
+import { useState, useEffect, MouseEvent, useRef } from 'react'
 import { motion, AnimatePresence, useMotionTemplate, useMotionValue } from 'framer-motion'
 import { ExternalLink, Award, X, ZoomIn, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
@@ -14,10 +14,12 @@ const allCategories = ['All', ...Array.from(new Set(certificates.map((c) => c.ca
 // --- Premium Spotlight Card Component ---
 function SpotlightCard({ 
   children, 
-  onClick 
+  onClick,
+  ariaLabel,
 }: { 
-  children: React.ReactNode, 
-  onClick: () => void 
+  children: React.ReactNode
+  onClick: (trigger: HTMLElement) => void
+  ariaLabel: string
 }) {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -32,10 +34,16 @@ function SpotlightCard({
       whileHover={{ y: -4 }}
       className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl bg-surface border border-surface-border cursor-pointer transition-all duration-500 hover:border-white/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       onMouseMove={handleMouseMove}
-      onClick={onClick}
+      onClick={(e) => onClick(e.currentTarget)}
       role="button"
+      aria-label={ariaLabel}
       tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter') onClick() }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onClick(e.currentTarget)
+        }
+      }}
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-500 group-hover:opacity-100"
@@ -57,16 +65,28 @@ function SpotlightCard({
 export default function CertificatesPage() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null)
 
   const filtered =
     activeCategory === 'All'
       ? certificates
       : certificates.filter((c) => c.category === activeCategory)
 
+  const openCertificate = (cert: Certificate, trigger: HTMLElement) => {
+    triggerRef.current = trigger
+    setSelectedCert(cert)
+  }
+
+  const closeCertificate = () => {
+    setSelectedCert(null)
+    window.requestAnimationFrame(() => triggerRef.current?.focus())
+  }
+
   // Handle ESC key to close modal
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedCert(null)
+      if (e.key === 'Escape') closeCertificate()
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
@@ -80,6 +100,12 @@ export default function CertificatesPage() {
       document.body.style.overflow = 'unset'
     }
     return () => { document.body.style.overflow = 'unset' }
+  }, [selectedCert])
+
+  useEffect(() => {
+    if (selectedCert) {
+      closeButtonRef.current?.focus()
+    }
   }, [selectedCert])
 
   return (
@@ -130,7 +156,10 @@ export default function CertificatesPage() {
             <StaggerContainer className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((cert) => (
                 <StaggerItem key={cert.id}>
-                  <SpotlightCard onClick={() => setSelectedCert(cert)}>
+                  <SpotlightCard
+                    onClick={(trigger) => openCertificate(cert, trigger)}
+                    ariaLabel={`View ${cert.title} credential`}
+                  >
                     
                     {/* Image Thumbnail */}
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-elevated/40 border-b border-surface-border flex items-center justify-center">
@@ -178,26 +207,31 @@ export default function CertificatesPage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-background/90 backdrop-blur-xl"
-            onClick={() => setSelectedCert(null)}
+            onClick={closeCertificate}
           >
             <motion.div
+              id="cert-modal"
               initial={{ scale: 0.95, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 30 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="relative w-full max-w-5xl max-h-full overflow-y-auto bg-surface-elevated/40 border border-white/10 shadow-2xl rounded-3xl flex flex-col"
               onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="cert-modal-title"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 md:p-8 border-b border-white/10 sticky top-0 bg-surface/50 backdrop-blur-md z-10">
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground">{selectedCert.title}</h3>
+                  <h3 id="cert-modal-title" className="text-xl md:text-2xl font-bold tracking-tight text-foreground">{selectedCert.title}</h3>
                   <p className="text-sm font-medium text-muted-foreground mt-1 flex items-center gap-2">
                     <ShieldCheck size={16} className="text-emerald-500/70" /> {selectedCert.issuer} <span className="opacity-40">•</span> {selectedCert.date}
                   </p>
                 </div>
                 <button
-                  onClick={() => setSelectedCert(null)}
+                  ref={closeButtonRef}
+                  onClick={closeCertificate}
                   className="p-3 rounded-full bg-surface hover:bg-surface-hover border border-surface-border text-muted-foreground hover:text-foreground transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="Close modal"
                 >

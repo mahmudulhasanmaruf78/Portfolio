@@ -64,7 +64,7 @@ export function Navbar() {
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface border border-surface-border text-foreground transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/10 group-hover:text-accent shadow-card group-hover:shadow-glow-sm">
               {SITE_META.name[0]}
             </div>
-            <span>Mahmudul Hasan Maruf</span>
+            <span>{SITE_META.name}</span>
           </Link>
 
           {/* Desktop Nav */}
