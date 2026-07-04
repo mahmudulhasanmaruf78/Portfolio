@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   content: [
@@ -94,6 +95,11 @@ const config: Config = {
         'card-hover': '0 4px 16px hsl(0 0% 0% / 0.5), 0 0 0 1px hsl(var(--surface-border) / 0.8)',
         'modal': '0 24px 48px hsl(0 0% 0% / 0.6), 0 0 0 1px hsl(var(--surface-border))',
         'inner-highlight': 'inset 0 1px 0 hsl(255 100% 100% / 0.06)',
+        // Glass-specific
+        'glass':         '0 1px 1px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(255 100% 100% / 0.05)',
+        'glass-hover':   '0 8px 32px hsl(0 0% 0% / 0.5), 0 0 0 1px hsl(220 96% 62% / 0.15), inset 0 1px 0 hsl(255 100% 100% / 0.08)',
+        'glass-elevated':'0 24px 48px hsl(0 0% 0% / 0.6), inset 0 1px 0 hsl(255 100% 100% / 0.10)',
+        'glass-inset':   'inset 0 1px 3px hsl(0 0% 0% / 0.4)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -138,9 +144,25 @@ const config: Config = {
         'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
         'smooth': 'cubic-bezier(0.21, 0.47, 0.32, 0.98)',
       },
+      // Extended backdrop blur values for glass layers
+      backdropBlur: {
+        xs: '2px',
+        sm: '4px',
+        md: '12px',
+        lg: '20px',
+        xl: '32px',
+        '2xl': '48px',
+        '3xl': '64px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    // Adds a `light:` variant that mirrors how `dark:` works for .dark class
+    // e.g. `light:bg-black/5` applies only when html has class="light"
+    plugin(function ({ addVariant }) {
+      addVariant('light', '.light &')
+    }),
+  ],
 }
 
 export default config

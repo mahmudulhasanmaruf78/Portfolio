@@ -233,6 +233,82 @@
     box-shadow: inset 0 1px 0 hsl(255 100% 100% / 0.06);
   }
 
+  /* ── Glass utility classes ─────────────────────────────────────────────────
+     Use these when you need glassmorphism without importing <GlassCard>.
+     They use CSS custom properties so they adapt to .light / .dark tokens.
+  ──────────────────────────────────────────────────────────────────────────── */
+
+  /* Base glass — standard card */
+  .glass {
+    background-color: hsl(255 100% 100% / 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(255 100% 100% / 0.08);
+    box-shadow: 0 1px 1px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(255 100% 100% / 0.05);
+  }
+
+  /* Subtle glass — section containers */
+  .glass-subtle {
+    background-color: hsl(255 100% 100% / 0.02);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid hsl(255 100% 100% / 0.05);
+  }
+
+  /* Elevated glass — modals, overlays */
+  .glass-elevated {
+    background-color: hsl(255 100% 100% / 0.08);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid hsl(255 100% 100% / 0.14);
+    box-shadow: 0 24px 48px hsl(0 0% 0% / 0.6), inset 0 1px 0 hsl(255 100% 100% / 0.10);
+  }
+
+  /* Interactive glass — hover lift + accent glow */
+  .glass-interactive {
+    @apply glass;
+    transition: background-color 300ms ease, border-color 300ms ease,
+                box-shadow 300ms ease, transform 300ms ease;
+    cursor: pointer;
+    &:hover {
+      background-color: hsl(255 100% 100% / 0.07);
+      border-color: hsl(255 100% 100% / 0.18);
+      box-shadow: 0 8px 32px hsl(0 0% 0% / 0.5),
+                  0 0 0 1px hsl(var(--accent) / 0.15),
+                  inset 0 1px 0 hsl(255 100% 100% / 0.08);
+      transform: translateY(-3px);
+    }
+    &:active {
+      transform: translateY(0);
+      transition-duration: 80ms;
+    }
+  }
+
+  /* Light mode overrides for glass classes */
+  .light .glass {
+    background-color: hsl(0 0% 0% / 0.03);
+    border-color: hsl(0 0% 0% / 0.07);
+    box-shadow: 0 1px 3px hsl(0 0% 0% / 0.08), inset 0 1px 0 hsl(255 100% 100% / 0.9);
+  }
+
+  .light .glass-subtle {
+    background-color: hsl(0 0% 0% / 0.015);
+    border-color: hsl(0 0% 0% / 0.05);
+  }
+
+  .light .glass-elevated {
+    background-color: hsl(0 0% 100% / 0.8);
+    border-color: hsl(0 0% 0% / 0.10);
+    box-shadow: 0 8px 32px hsl(0 0% 0% / 0.12), inset 0 1px 0 hsl(255 100% 100% / 0.9);
+  }
+
+  .light .glass-interactive:hover {
+    background-color: hsl(0 0% 0% / 0.06);
+    border-color: hsl(0 0% 0% / 0.14);
+    box-shadow: 0 8px 24px hsl(0 0% 0% / 0.10),
+                0 0 0 1px hsl(var(--accent) / 0.15);
+  }
+
   /* Text gradient */
   .text-gradient {
     @apply bg-clip-text text-transparent;
