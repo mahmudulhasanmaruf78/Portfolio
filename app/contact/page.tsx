@@ -16,6 +16,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const {
     register,
@@ -28,6 +29,8 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
+    setIsError(false)
+    setErrorMessage('')
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -36,17 +39,20 @@ export default function ContactPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to send message')
+        const result = (await response.json().catch(() => null)) as { message?: string } | null
+        throw new Error(result?.message ?? 'Failed to send message')
       }
 
       setIsSuccess(true)
       setIsError(false)
+      setErrorMessage('')
       reset()
       // Reset success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000)
     } catch (error) {
       console.error(error)
       setIsError(true)
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.')
       setTimeout(() => setIsError(false), 6000)
     } finally {
       setIsSubmitting(false)
@@ -142,7 +148,7 @@ export default function ContactPage() {
                 {errors.email && <span>{errors.email.message}</span>}
                 {errors.message && <span>{errors.message.message}</span>}
                 {isSuccess && <span>Your message was sent successfully!</span>}
-                {isError && <span>Failed to send message. Please try again.</span>}
+                {isError && <span>{errorMessage}</span>}
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 relative z-10">
@@ -239,9 +245,17 @@ export default function ContactPage() {
                 )}
 
                 {isError && (
-                  <p className="flex items-center gap-1.5 text-sm font-medium text-red-400 mt-3 animate-in fade-in slide-in-from-bottom-2">
-                    <AlertCircle size={14} /> Something went wrong. Please try again or email me directly.
-                  </p>
+                  <div className="space-y-2 mt-3 animate-in fade-in slide-in-from-bottom-2">
+                    <p className="flex items-center gap-1.5 text-sm font-medium text-red-400">
+                      <AlertCircle size={14} /> {errorMessage || 'Something went wrong. Please try again.'}
+                    </p>
+                    <a
+                      href={`mailto:${SOCIAL_LINKS.email}`}
+                      className="inline-flex text-sm font-medium text-accent hover:text-accent/80"
+                    >
+                      Email me directly at {SOCIAL_LINKS.email}
+                    </a>
+                  </div>
                 )}
               </form>
             </div>
