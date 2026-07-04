@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
+import { FacebookIcon, GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { SOCIAL_LINKS } from '@/lib/constants'
 import { Section, SectionHeader } from '@/components/layout/Section'
 import { FadeIn } from '@/components/ui/Animations'
@@ -115,6 +115,14 @@ export default function ContactPage() {
                           className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
                           <GithubIcon size={16} /> GitHub
+                        </a>
+                        <a
+                          href={SOCIAL_LINKS.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                        >
+                          <FacebookIcon size={16} /> Facebook
                         </a>
                       </div>
                     </div>

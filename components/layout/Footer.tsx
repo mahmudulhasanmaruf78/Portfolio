@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowUpRight, Mail } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
+import { FacebookIcon, GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { NAV_LINKS, SOCIAL_LINKS, SITE_META } from '@/lib/constants'
 import { FadeIn } from '@/components/ui/Animations'
 
@@ -51,6 +51,15 @@ export function Footer() {
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border bg-surface text-muted-foreground shadow-card transition-all hover:border-accent/40 hover:text-accent hover:bg-accent/10"
               >
                 <Mail size={16} />
+              </a>
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook profile"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border bg-surface text-muted-foreground shadow-card transition-all hover:border-accent/40 hover:text-accent hover:bg-accent/10"
+              >
+                <FacebookIcon size={16} />
               </a>
             </div>
           </div>
@@ -109,6 +118,17 @@ export function Footer() {
                     className="group inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     LinkedIn
+                    <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 opacity-50 group-hover:opacity-100" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={SOCIAL_LINKS.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Facebook
                     <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 opacity-50 group-hover:opacity-100" />
                   </a>
                 </li>

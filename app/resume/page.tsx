@@ -59,6 +59,8 @@ export default function ResumePage() {
                 <a href={SOCIAL_LINKS.linkedin} className="hover:text-accent transition-colors">LinkedIn</a>
                 <span className="hidden sm:inline opacity-30">•</span>
                 <a href={SOCIAL_LINKS.github} className="hover:text-accent transition-colors">GitHub</a>
+                <span className="hidden sm:inline opacity-30">•</span>
+                <a href={SOCIAL_LINKS.facebook} className="hover:text-accent transition-colors">Facebook</a>
               </div>
             </div>
 

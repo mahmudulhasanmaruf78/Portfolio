@@ -10,9 +10,10 @@ export const profile = {
   cgpa: '3.68',
   cgpaScale: '4.00',
   location: 'Dhaka, Bangladesh',
-  email: 'mahmudul.hasan@student.aiub.edu',
+  email: 'mahmudulhasanmaruf78@gmail.com',
   github: 'https://github.com/mahmudulhasanmaruf78',
-  linkedin: 'https://linkedin.com/in/mahmudulhasanmaruf78',
+  linkedin: 'https://www.linkedin.com/in/mahmudul-hasan-maruf-1a2a3041b/',
+  facebook: 'https://www.facebook.com/mahmudulmaruf78',
   availability: 'Available for internships and entry-level roles starting January 2026',
   bio: [
     "I'm a final-year Computer Science & Engineering student at AIUB with a deep passion for building robust and intuitive web applications. My journey into software development began with a curiosity for how complex systems are architected behind the scenes, and it quickly evolved into a dedicated pursuit of engineering excellence.",

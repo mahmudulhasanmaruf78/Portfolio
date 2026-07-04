@@ -2,7 +2,7 @@
 
 import { Mail, MapPin } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
+import { FacebookIcon, GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { profile } from '@/lib/data/profile'
 import { Section, SectionHeader } from '@/components/layout/Section'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Animations'
@@ -128,6 +128,10 @@ export default function AboutClient() {
                   <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface text-muted-foreground shadow-sm transition-all hover:bg-surface-hover hover:text-foreground hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                     <LinkedinIcon size={16} />
+                  </a>
+                  <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface text-muted-foreground shadow-sm transition-all hover:bg-surface-hover hover:text-foreground hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    <FacebookIcon size={16} />
                   </a>
                 </div>
               </motion.div>

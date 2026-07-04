@@ -15,7 +15,7 @@ import {
   Mouse,
   ChevronDown
 } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
+import { FacebookIcon, GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { profile } from '@/lib/data/profile'
 import { projects } from '@/lib/data/projects'
 import { Button } from '@/components/ui/Button'
@@ -234,6 +234,21 @@ export default function HomePage() {
                   <LinkedinIcon size={14} />
                 </motion.div>
                 <span>LinkedIn</span>
+              </a>
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <motion.div
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border shadow-card transition-all group-hover:border-accent/30 group-hover:text-accent group-hover:bg-accent/5"
+                >
+                  <FacebookIcon size={14} />
+                </motion.div>
+                <span>Facebook</span>
               </a>
             </motion.div>
           </motion.div>

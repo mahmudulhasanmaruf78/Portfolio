@@ -14,6 +14,7 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = {
   github: 'https://github.com/mahmudulhasanmaruf78',
   linkedin: 'https://www.linkedin.com/in/mahmudul-hasan-maruf-1a2a3041b/',
+  facebook: 'https://www.facebook.com/mahmudulmaruf78',
   email: 'mahmudulhasanmaruf78@gmail.com',
 }
 

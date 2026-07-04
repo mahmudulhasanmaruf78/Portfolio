@@ -7,7 +7,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
-import { NAV_LINKS, SITE_META } from '@/lib/constants'
+import { NAV_LINKS, SITE_META, SOCIAL_LINKS } from '@/lib/constants'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -174,7 +174,7 @@ export function Navbar() {
                 <div className="h-px w-full bg-surface-border" />
                 <div className="flex gap-4">
                   <a
-                    href="https://github.com/mahmudulhasanmaruf78"
+                    href={SOCIAL_LINKS.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-surface-border text-muted-foreground transition-colors hover:text-foreground hover:bg-surface-hover"
@@ -182,7 +182,7 @@ export function Navbar() {
                     <GithubIcon size={18} />
                   </a>
                   <a
-                    href="https://linkedin.com/in/mahmudulhasanmaruf78"
+                    href={SOCIAL_LINKS.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-surface-border text-muted-foreground transition-colors hover:text-foreground hover:bg-surface-hover"
