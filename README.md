@@ -67,7 +67,7 @@ The contact form posts to `/api/contact`. It validates input with Zod, uses a hi
 Copy `.env.example` to `.env.local` and configure:
 
 ```bash
-CONTACT_TO_EMAIL=mahmudul.hasan@student.aiub.edu
+CONTACT_TO_EMAIL=mahmudulhasanmaruf78@gmail.com
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_SECURE=false

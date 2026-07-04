@@ -14,7 +14,7 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = {
   github: 'https://github.com/mahmudulhasanmaruf78',
   linkedin: 'https://linkedin.com/in/mahmudulhasanmaruf78',
-  email: 'mahmudul.hasan@student.aiub.edu',
+  email: 'mahmudulhasanmaruf78@gmail.com',
 }
 
 export const SITE_META = {
