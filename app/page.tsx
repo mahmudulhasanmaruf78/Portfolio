@@ -23,7 +23,7 @@ import { projects } from '@/lib/data/projects'
 import { skillCategories, type SkillCategory } from '@/lib/data/skills'
 import { education } from '@/lib/data/education'
 import { certificates } from '@/lib/data/certificates'
-import { currentlyLearning, roadmap } from '@/lib/data/learning'
+import { learningPath } from '@/lib/data/learning'
 import { SOCIAL_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import { contactSchema, type ContactFormData } from '@/lib/contact'
@@ -591,79 +591,61 @@ export default function HomePage() {
             />
           </FadeIn>
 
-          <div className="grid gap-12 lg:grid-cols-2">
-            {/* Active Learning */}
-            <div>
-              <FadeIn>
-                <h3 className="text-base font-semibold text-foreground flex items-center gap-2 mb-8 border-b border-surface-border pb-4">
-                  <BookOpen size={16} className="text-accent" /> Active Focus
-                </h3>
-              </FadeIn>
-              <StaggerContainer className="grid gap-5">
-                {currentlyLearning.map((item) => (
-                  <StaggerItem key={item.id}>
-                    <div className="card-hover p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="text-base font-semibold text-foreground">{item.topic}</h4>
-                        <Badge variant={item.resourceType === 'Course' ? 'info' : item.resourceType === 'Book' ? 'warning' : 'purple'}>
-                          {item.resourceType}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                        <strong className="text-foreground/80 font-medium">Resource:</strong> {item.resource}
-                      </p>
-                      <ProgressBar progress={item.progress} title="Completion" />
+          <div className="max-w-4xl mx-auto">
+            <FadeIn>
+              <div className="bg-surface border border-surface-border rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden mb-12">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-purple-500" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
+                  <div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight mb-2">
+                      {learningPath.title}
+                    </h3>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground font-medium">
+                      <span className="flex items-center gap-1.5"><BookOpen size={16} /> Duration: {learningPath.duration}</span>
                     </div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
-            </div>
-
-            {/* Roadmap */}
-            <div>
-              <FadeIn>
-                <h3 className="text-base font-semibold text-foreground flex items-center gap-2 mb-8 border-b border-surface-border pb-4">
-                  <Target size={16} className="text-accent" /> Developer Roadmap
-                </h3>
-              </FadeIn>
-              <StaggerContainer className="relative pl-6">
-                <div className="absolute left-[7px] top-4 bottom-4 w-px bg-gradient-to-b from-accent/50 via-surface-border to-transparent" />
-                <div className="space-y-8">
-                  {roadmap.map((phase) => (
-                    <StaggerItem key={phase.quarter}>
-                      <div className="relative group">
-                        <div className="absolute -left-8 top-1 flex h-4 w-4 items-center justify-center bg-background">
-                          {phase.quarter.includes('Current') ? (
-                            <div className="h-3 w-3 rounded-full bg-accent ring-4 ring-accent/20 animate-pulse" />
-                          ) : (
-                            <Circle size={12} className="text-muted-foreground" />
-                          )}
-                        </div>
-                        <div className={cn(
-                          'transition-all duration-200 p-5 rounded-xl border border-transparent hover:border-surface-border hover:bg-surface-elevated/30',
-                          phase.quarter.includes('Current') && 'border-surface-border bg-surface-elevated/10'
-                        )}>
-                          <div className="flex items-center gap-3 mb-3">
-                            <h4 className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">{phase.quarter}</h4>
-                            {phase.quarter.includes('Current') && (
-                              <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border bg-accent/10 text-accent border-accent/20">Active</span>
-                            )}
-                          </div>
-                          <ul className="space-y-2">
-                            {phase.items.map((item, i) => (
-                              <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-surface-border" />
-                                <span className="leading-relaxed">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </StaggerItem>
-                  ))}
+                  </div>
+                  <Badge variant="learning" className="w-fit self-start sm:self-auto py-1.5 px-4 text-xs shadow-glow-sm flex items-center">
+                    <span className="relative flex h-2 w-2 mr-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                    </span>
+                    {learningPath.status}
+                  </Badge>
                 </div>
-              </StaggerContainer>
-            </div>
+
+                <div className="relative">
+                  <div className="absolute left-[15px] top-4 bottom-4 w-px bg-gradient-to-b from-accent/50 via-surface-border to-transparent hidden md:block" />
+                  
+                  <StaggerContainer className="space-y-6">
+                    {learningPath.curriculum.map((phase, idx) => (
+                      <StaggerItem key={idx}>
+                        <div className="relative md:pl-12 group">
+                          <div className="hidden md:flex absolute left-[3px] top-5 h-6 w-6 items-center justify-center bg-surface">
+                            <div className="h-3 w-3 rounded-full bg-accent ring-4 ring-accent/20 transition-transform duration-300 group-hover:scale-125 group-hover:bg-purple-400 group-hover:ring-purple-400/30" />
+                          </div>
+                          
+                          <div className="bg-surface-elevated/30 border border-surface-border rounded-xl p-6 transition-colors duration-300 hover:border-accent/30 hover:bg-surface-elevated/50 shadow-sm">
+                            <h4 className="text-lg font-semibold text-foreground mb-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                              <span className="text-accent text-sm font-bold tracking-widest uppercase opacity-80">Phase 0{idx + 1}</span>
+                              <span className="hidden sm:inline text-surface-border">|</span>
+                              {phase.phase}
+                            </h4>
+                            
+                            <div className="flex flex-wrap gap-2.5">
+                              {phase.topics.map(topic => (
+                                <span key={topic} className="px-3 py-1.5 bg-background border border-surface-border rounded-lg text-[13px] font-medium text-muted-foreground shadow-sm group-hover:text-foreground group-hover:border-white/10 transition-colors">
+                                  {topic}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </StaggerItem>
+                    ))}
+                  </StaggerContainer>
+                </div>
+              </div>
+            </FadeIn>
           </div>
 
           {/* Motivation quote */}
