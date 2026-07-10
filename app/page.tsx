@@ -525,11 +525,11 @@ export default function HomePage() {
                   className="card-hover group relative flex w-full flex-col items-start gap-4 p-6 text-left"
                 >
                   {cert.image && cert.image !== '/placeholder-cert.jpg' ? (
-                    <div className="relative flex h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-surface-elevated border border-surface-border shadow-sm">
-                      <Image src={cert.image} alt={cert.title} fill className="object-cover" />
+                    <div className="relative flex w-full aspect-[16/9] shrink-0 overflow-hidden rounded-lg border border-surface-border shadow-sm mb-2 group-hover:border-accent/30 transition-colors">
+                      <Image src={cert.image} alt={cert.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
                   ) : (
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-elevated border border-surface-border">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-elevated border border-surface-border mb-2 group-hover:border-accent/30 transition-colors">
                       <Award size={22} className="text-muted-foreground group-hover:text-accent transition-colors" />
                     </div>
                   )}
