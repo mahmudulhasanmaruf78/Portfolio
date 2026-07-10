@@ -67,6 +67,11 @@ export const projects: Project[] = [
     ],
     visualThoughtProcess: [
       {
+        title: "Project Banner",
+        description: "A high-level preview showcasing the Job Portal's core interface and design language.",
+        image: "/images/projects/job-portal-banner.png"
+      },
+      {
         title: "System Architecture Diagram",
         description: "Our structural layout mapping the separation of controllers, models, and views.",
         image: "/images/projects/job-portal-architecture.png"
