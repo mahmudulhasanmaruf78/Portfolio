@@ -79,7 +79,7 @@ export const projects: Project[] = [
       {
         title: "Application Tracking Dashboard",
         description: "The employer interface I developed, displaying the interactive status selector and the Chart.js visual data funnel.",
-        image: "/images/projects/employer-dashboard.png"
+        image: "/images/projects/Application-Tracking-Dashboard.png"
       },
       {
         title: "Admin Job Management Panel",
