@@ -351,16 +351,8 @@ export default function HomePage() {
                   {group.skills.map((skill) => (
                     <StaggerItem key={skill.name}>
                       <div className="skill-pill group cursor-default">
-                        <div className="flex items-center gap-3 w-full">
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-foreground truncate">{skill.name}</p>
-                          </div>
-                          <Badge
-                            variant={skill.level.toLowerCase() as 'learning' | 'familiar' | 'confident'}
-                            className="shrink-0 text-[10px]"
-                          >
-                            {skill.level}
-                          </Badge>
+                        <div className="flex items-center w-full">
+                          <p className="text-sm font-medium text-foreground truncate">{skill.name}</p>
                         </div>
                       </div>
                     </StaggerItem>
