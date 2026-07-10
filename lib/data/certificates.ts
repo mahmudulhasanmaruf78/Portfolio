@@ -19,7 +19,7 @@ export const certificates: Certificate[] = [
     date: '26 Dec 2022',
     description: 'Completed the IT Essentials course covering fundamental computer hardware, software, and networking concepts. Demonstrated practical skills in troubleshooting, configuring, and securing computer systems and networks.',
     credentialUrl: '/MAHMUDUL_HASANMARUF-Introduction_to_-certificate.pdf',
-    image: '/images/certificate/certificate-thumbnail.png',
+    image: '/images/Certificate/cisco.jpeg',
     category: 'IT Support & Networking',
   }
 ]
