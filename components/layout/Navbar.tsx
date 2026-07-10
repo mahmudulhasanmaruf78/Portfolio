@@ -28,14 +28,14 @@ export function Navbar() {
   // Track which section is in view for anchor-link active state
   useEffect(() => {
     const sectionIds = NAV_LINKS
-      .filter((l) => l.href.startsWith('#'))
-      .map((l) => l.href.slice(1))
+      .filter((l) => l.href.includes('#'))
+      .map((l) => l.href.split('#')[1])
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveHash(`#${entry.target.id}`)
+            setActiveHash(`/#${entry.target.id}`)
           }
         })
       },
@@ -90,9 +90,9 @@ export function Navbar() {
             onMouseLeave={() => setHoveredLink(null)}
           >
             {NAV_LINKS.map((link, idx) => {
-              const isAnchor = link.href.startsWith('#')
+              const isAnchor = link.href.includes('#')
               const isActive = isAnchor
-                ? activeHash === link.href
+                ? pathname === '/' && activeHash === link.href
                 : pathname === link.href
               return (
                 <Link
@@ -173,9 +173,9 @@ export function Navbar() {
             >
               <nav className="flex flex-col gap-5">
                 {NAV_LINKS.map((link, i) => {
-                  const isAnchor = link.href.startsWith('#')
+                  const isAnchor = link.href.includes('#')
                   const isActive = isAnchor
-                    ? activeHash === link.href
+                    ? pathname === '/' && activeHash === link.href
                     : pathname === link.href
                   return (
                     <motion.div

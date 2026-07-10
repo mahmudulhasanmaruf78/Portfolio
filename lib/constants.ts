@@ -1,14 +1,14 @@
 // lib/constants.ts
 
 export const NAV_LINKS = [
-  { label: 'About',        href: '#about' },
-  { label: 'Skills',       href: '#skills' },
-  { label: 'Projects',     href: '#projects' },
-  { label: 'Education',    href: '#education' },
-  { label: 'Certificates', href: '#certificates' },
-  { label: 'Learning',     href: '#learning' },
+  { label: 'About',        href: '/#about' },
+  { label: 'Skills',       href: '/#skills' },
+  { label: 'Projects',     href: '/#projects' },
+  { label: 'Education',    href: '/#education' },
+  { label: 'Certificates', href: '/#certificates' },
+  { label: 'Learning',     href: '/#learning' },
   { label: 'Resume',       href: '/resume' },
-  { label: 'Contact',      href: '#contact' },
+  { label: 'Contact',      href: '/#contact' },
 ]
 
 export const SOCIAL_LINKS = {
