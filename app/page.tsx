@@ -347,16 +347,32 @@ export default function HomePage() {
                 <FadeIn>
                   <h3 className="text-base font-semibold text-foreground mb-5">{group.category}</h3>
                 </FadeIn>
-                <StaggerContainer className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                  {group.skills.map((skill) => (
-                    <StaggerItem key={skill.name}>
-                      <div className="skill-pill group cursor-default">
-                        <div className="flex items-center w-full">
-                          <p className="text-sm font-medium text-foreground truncate">{skill.name}</p>
+                <StaggerContainer className="flex flex-wrap gap-3">
+                  {group.skills.map((skill) => {
+                    const Icon = skill.icon
+                    return (
+                      <StaggerItem key={skill.name}>
+                        <div 
+                          className="group relative flex cursor-default items-center gap-2 overflow-hidden rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
+                          style={{
+                            borderColor: `${skill.color}40`,
+                            color: skill.color,
+                          }}
+                        >
+                          <div 
+                            className="absolute inset-0 opacity-10 transition-opacity duration-300 group-hover:opacity-20"
+                            style={{ backgroundColor: skill.color }}
+                          />
+                          <div
+                            className="absolute inset-0 opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100"
+                            style={{ boxShadow: `inset 0 0 12px ${skill.color}40` }}
+                          />
+                          <Icon className="relative z-10 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                          <span className="relative z-10">{skill.name}</span>
                         </div>
-                      </div>
-                    </StaggerItem>
-                  ))}
+                      </StaggerItem>
+                    )
+                  })}
                 </StaggerContainer>
               </div>
             ))}

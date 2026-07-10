@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { skillCategories, levelColors, type SkillLevel } from '@/lib/data/skills'
+import { skillCategories, type SkillLevel } from '@/lib/data/skills'
 import { Section, SectionHeader } from '@/components/layout/Section'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Animations'
 import { Badge } from '@/components/ui/Badge'
