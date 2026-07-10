@@ -523,9 +523,15 @@ export default function HomePage() {
                   aria-label={`View details for ${cert.title}`}
                   className="card-hover group relative flex w-full flex-col items-start gap-4 p-6 text-left"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-elevated border border-surface-border">
-                    <Award size={22} className="text-muted-foreground group-hover:text-accent transition-colors" />
-                  </div>
+                  {cert.image && cert.image !== '/placeholder-cert.jpg' ? (
+                    <div className="relative flex h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-surface-elevated border border-surface-border shadow-sm">
+                      <Image src={cert.image} alt={cert.title} fill className="object-cover" />
+                    </div>
+                  ) : (
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-elevated border border-surface-border">
+                      <Award size={22} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                    </div>
+                  )}
                   <div className="flex-1">
                     <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-2">{cert.category}</p>
                     <h3 className="text-base font-semibold text-foreground leading-snug mb-1 group-hover:text-accent transition-colors">{cert.title}</h3>
@@ -562,9 +568,15 @@ export default function HomePage() {
                 className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-surface-hover transition-colors">
                 <X size={16} />
               </button>
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 mb-6">
-                <Award size={24} className="text-accent" />
-              </div>
+              {selectedCert.image && selectedCert.image !== '/placeholder-cert.jpg' ? (
+                <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl border border-surface-border mb-6 shadow-sm">
+                  <Image src={selectedCert.image} alt={selectedCert.title} fill className="object-contain bg-surface-elevated/30" />
+                </div>
+              ) : (
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 mb-6">
+                  <Award size={24} className="text-accent" />
+                </div>
+              )}
               <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-2">{selectedCert.category}</p>
               <h2 className="text-xl font-semibold text-foreground leading-snug mb-1">{selectedCert.title}</h2>
               <p className="text-sm text-muted-foreground mb-6">{selectedCert.issuer} · {selectedCert.date}</p>
