@@ -189,7 +189,7 @@ function ContactForm() {
             <p className="flex items-center gap-1.5 text-sm font-medium text-red-400">
               <AlertCircle size={14} /> {errorMessage || 'Something went wrong.'}
             </p>
-            <a href={`mailto:${SOCIAL_LINKS.email}`} className="inline-flex text-sm font-medium text-accent hover:text-accent/80">
+            <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SOCIAL_LINKS.email}`} target="_blank" rel="noopener noreferrer" className="inline-flex text-sm font-medium text-accent hover:text-accent/80">
               Email me directly at {SOCIAL_LINKS.email}
             </a>
           </div>
@@ -701,7 +701,7 @@ export default function HomePage() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-foreground mb-1">Email</p>
-                      <a href={`mailto:${SOCIAL_LINKS.email}`} className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                      <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SOCIAL_LINKS.email}`} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-accent transition-colors">
                         {SOCIAL_LINKS.email}
                       </a>
                       <p className="text-xs text-muted-foreground/60 mt-1">Best way to reach me</p>

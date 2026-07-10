@@ -46,7 +46,7 @@ export function Footer() {
                 <LinkedinIcon size={16} />
               </a>
               <a
-                href={`mailto:${SOCIAL_LINKS.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SOCIAL_LINKS.email}`}
                 aria-label="Email me"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border bg-surface text-muted-foreground shadow-card transition-all hover:border-accent/40 hover:text-accent hover:bg-accent/10"
               >
