@@ -4,6 +4,13 @@ export const profile = {
   name: 'Mahmudul Hasan Maruf',
   role: 'Final-Year CS&E Student',
   tagline: 'Aspiring Software Engineer & Web Developer',
+  roles: [
+    'Full Stack Developer',
+    'React & Next.js Engineer',
+    'UI/UX Enthusiast',
+    'CS&E Final-Year Student',
+    'Open Source Contributor',
+  ],
   university: 'American International University–Bangladesh (AIUB)',
   department: 'Computer Science & Engineering',
   expectedGraduation: 'December 2025',

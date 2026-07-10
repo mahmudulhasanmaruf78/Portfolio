@@ -15,33 +15,49 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hoveredLink, setHoveredLink] = useState<number | null>(null)
+  const [activeHash, setActiveHash] = useState('')
   const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Prevent scroll when mobile menu is open
+  // Track which section is in view for anchor-link active state
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [mobileMenuOpen])
+    const sectionIds = NAV_LINKS
+      .filter((l) => l.href.startsWith('#'))
+      .map((l) => l.href.slice(1))
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileMenuOpen(false)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveHash(`#${entry.target.id}`)
+          }
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    )
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
   }, [pathname])
+
+  // Close mobile menu when anchor link clicked
+  const handleLinkClick = () => setMobileMenuOpen(false)
+
+  // Prevent body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'unset'
+    return () => { document.body.style.overflow = 'unset' }
+  }, [mobileMenuOpen])
 
   return (
     <>
@@ -65,21 +81,25 @@ export function Navbar() {
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-surface border border-surface-border text-foreground transition-all duration-300 group-hover:border-accent/40 group-hover:bg-accent/10 group-hover:text-accent shadow-card group-hover:shadow-glow-sm">
               {SITE_META.name[0]}
             </div>
-            <span>{SITE_META.name}</span>
+            <span className="hidden sm:inline">{SITE_META.name}</span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav 
+          <nav
             className="hidden md:flex items-center gap-1 bg-surface-elevated/40 rounded-full px-2 py-1.5 border border-surface-border/50 backdrop-blur-sm shadow-inner-highlight"
             onMouseLeave={() => setHoveredLink(null)}
           >
             {NAV_LINKS.map((link, idx) => {
-              const isActive = pathname === link.href
+              const isAnchor = link.href.startsWith('#')
+              const isActive = isAnchor
+                ? activeHash === link.href
+                : pathname === link.href
               return (
                 <Link
                   key={link.label}
                   href={link.href}
                   onMouseEnter={() => setHoveredLink(idx)}
+                  onClick={handleLinkClick}
                   className={cn(
                     'relative px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-full',
                     isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
@@ -105,7 +125,7 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right Actions / Mobile Toggle */}
+          {/* Right Actions */}
           <div className="flex items-center gap-2 z-50">
             {/* Theme toggle — desktop */}
             <div className="hidden md:block">
@@ -113,13 +133,14 @@ export function Navbar() {
             </div>
 
             <Link
-              href="/contact"
+              href="#contact"
+              onClick={handleLinkClick}
               className="hidden md:inline-flex h-8 items-center justify-center rounded-lg bg-foreground px-4 text-xs font-medium text-background transition-colors hover:bg-foreground/90 active:scale-95"
             >
               Hire Me
             </Link>
 
-            {/* Theme toggle — visible on mobile too */}
+            {/* Theme toggle — mobile */}
             <ThemeToggle className="md:hidden" />
 
             <button
@@ -137,31 +158,35 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
-            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-30 bg-background/90 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-30 bg-background/95 backdrop-blur-lg md:hidden"
           >
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ delay: 0.1, duration: 0.3, ease: 'easeOut' }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ delay: 0.05, duration: 0.25, ease: 'easeOut' }}
               className="flex h-full flex-col justify-center px-8"
             >
-              <nav className="flex flex-col gap-6">
+              <nav className="flex flex-col gap-5">
                 {NAV_LINKS.map((link, i) => {
-                  const isActive = pathname === link.href
+                  const isAnchor = link.href.startsWith('#')
+                  const isActive = isAnchor
+                    ? activeHash === link.href
+                    : pathname === link.href
                   return (
                     <motion.div
                       key={link.label}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.15 + i * 0.05 }}
+                      transition={{ delay: 0.1 + i * 0.04 }}
                     >
                       <Link
                         href={link.href}
+                        onClick={handleLinkClick}
                         className={cn(
                           'text-2xl font-semibold tracking-tight transition-colors',
                           isActive ? 'text-accent' : 'text-foreground hover:text-muted-foreground',
@@ -186,6 +211,7 @@ export function Navbar() {
                     href={SOCIAL_LINKS.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleLinkClick}
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-surface-border text-muted-foreground transition-colors hover:text-foreground hover:bg-surface-hover"
                   >
                     <GithubIcon size={18} />
@@ -194,6 +220,7 @@ export function Navbar() {
                     href={SOCIAL_LINKS.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleLinkClick}
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-surface border border-surface-border text-muted-foreground transition-colors hover:text-foreground hover:bg-surface-hover"
                   >
                     <LinkedinIcon size={18} />
