@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import {
   ExternalLink, BookOpen, Code2, Award, TrendingUp, Mail,
