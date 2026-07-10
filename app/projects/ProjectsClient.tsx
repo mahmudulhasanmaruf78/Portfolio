@@ -5,15 +5,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ExternalLink, ArrowRight, Code2 } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/Icons'
-import { projects } from '@/lib/data/projects'
+import { projects, type Project } from '@/lib/data/projects'
 import { Section, SectionHeader } from '@/components/layout/Section'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Animations'
 import { Badge } from '@/components/ui/Badge'
 import { cn } from '@/lib/utils'
 
 export default function ProjectsClient() {
-  const featuredProjects = projects.filter(p => p.featured)
-  const otherProjects = projects.filter(p => !p.featured)
+  const featuredProjects = projects
+  const otherProjects: Project[] = []
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function ProjectsClient() {
                   <Link href={`/projects/${project.id}`} className="group relative w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden bg-surface-elevated border border-surface-border block flex-shrink-0">
                     <div className="absolute inset-0 bg-accent/5 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
                     <Image
-                      src={project.coverImage}
+                      src={project.visualThoughtProcess[0]?.image || '/placeholder-project.svg'}
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -51,11 +51,8 @@ export default function ProjectsClient() {
                   {/* Text Content */}
                   <div className="w-full lg:w-1/2 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
-                      <Badge variant={project.status === 'In Progress' ? 'learning' : 'confident'}>
-                        {project.status}
-                      </Badge>
                       <span className="text-sm font-medium text-muted-foreground">
-                        {project.year} <span className="mx-1.5 opacity-50">•</span> {project.role}
+                        {project.myRole.title}
                       </span>
                     </div>
 
@@ -66,13 +63,13 @@ export default function ProjectsClient() {
                     </Link>
 
                     <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                      {project.overview}
+                      {project.description}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-8">
-                      {project.stack.map(tech => (
-                        <span key={tech} className="skill-pill py-1.5 px-3 bg-surface text-foreground border border-surface-border rounded-lg text-sm font-medium">
-                          {tech}
+                      {project.techStack.map(tech => (
+                        <span key={tech.name} className="skill-pill py-1.5 px-3 bg-surface text-foreground border border-surface-border rounded-lg text-sm font-medium">
+                          {tech.name}
                         </span>
                       ))}
                     </div>
@@ -87,13 +84,13 @@ export default function ProjectsClient() {
                       </Link>
 
                       <div className="flex items-center gap-3">
-                        {project.github && (
-                          <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-foreground transition-colors">
+                        {project.githubLink && (
+                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-foreground transition-colors">
                             <GithubIcon size={20} />
                           </a>
                         )}
-                        {project.demo && (
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label="Live Demo" className="text-muted-foreground hover:text-foreground transition-colors">
+                        {project.liveLink && (
+                          <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label="Live Demo" className="text-muted-foreground hover:text-foreground transition-colors">
                             <ExternalLink size={20} />
                           </a>
                         )}
@@ -130,10 +127,10 @@ export default function ProjectsClient() {
                       <Code2 size={20} className="text-muted-foreground group-hover:text-accent transition-colors" />
                     </div>
                     <div className="flex items-center gap-2">
-                      {project.github && (
+                      {project.githubLink && (
                         <span className="text-muted-foreground hover:text-foreground transition-colors"><GithubIcon size={18} /></span>
                       )}
-                      {project.demo && (
+                      {project.liveLink && (
                         <span className="text-muted-foreground hover:text-foreground transition-colors"><ExternalLink size={18} /></span>
                       )}
                     </div>
@@ -149,14 +146,14 @@ export default function ProjectsClient() {
                   </div>
 
                   <div className="mt-auto pt-6 flex flex-wrap gap-2 relative z-10">
-                    {project.stack.slice(0, 3).map((tech) => (
-                      <span key={tech} className="text-xs font-medium text-muted-foreground bg-surface-elevated px-2.5 py-1 rounded-md border border-surface-border">
-                        {tech}
+                    {project.techStack.slice(0, 3).map((tech) => (
+                      <span key={tech.name} className="text-xs font-medium text-muted-foreground bg-surface-elevated px-2.5 py-1 rounded-md border border-surface-border">
+                        {tech.name}
                       </span>
                     ))}
-                    {project.stack.length > 3 && (
+                    {project.techStack.length > 3 && (
                       <span className="text-xs font-medium text-muted-foreground bg-surface-elevated px-2.5 py-1 rounded-md border border-surface-border">
-                        +{project.stack.length - 3}
+                        +{project.techStack.length - 3}
                       </span>
                     )}
                   </div>

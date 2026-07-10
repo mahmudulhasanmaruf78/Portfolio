@@ -1,14 +1,25 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Code2 } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Code2, CheckCircle2 } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/Icons'
 import { projects } from '@/lib/data/projects'
 import { Section } from '@/components/layout/Section'
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Animations'
 import { Button } from '@/components/ui/Button'
-import { Badge } from '@/components/ui/Badge'
 import { cn } from '@/lib/utils'
+import * as ReactIconsSi from 'react-icons/si'
+import * as ReactIconsFa from 'react-icons/fa'
+import * as ReactIconsTb from 'react-icons/tb'
+
+// Helper to dynamically get the icon component from string names like "SiPhp"
+const getIconComponent = (iconName: string) => {
+  if (iconName.startsWith('Si')) return (ReactIconsSi as any)[iconName]
+  if (iconName.startsWith('Fa')) return (ReactIconsFa as any)[iconName]
+  if (iconName.startsWith('Tb')) return (ReactIconsTb as any)[iconName]
+  if (iconName.startsWith('Di')) return (ReactIconsSi as any)[iconName.replace('Di', 'Si')] // fallback for DevIcons to SimpleIcons if possible, though user used DiMysql
+  return Code2
+}
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -20,9 +31,7 @@ export function generateMetadata({ params }: { params: { id: string } }) {
   const project = projects.find((p) => p.id === params.id)
   
   if (!project) {
-    return {
-      title: 'Project Not Found',
-    }
+    return { title: 'Project Not Found' }
   }
 
   return {
@@ -42,7 +51,7 @@ export default function ProjectCaseStudyPage({ params }: { params: { id: string 
     <>
       <article className="pt-24 pb-32">
         {/* Navigation & Header */}
-        <Section className="mb-12">
+        <Section className="mb-16">
           <FadeIn>
             <Link 
               href="/projects" 
@@ -52,31 +61,23 @@ export default function ProjectCaseStudyPage({ params }: { params: { id: string 
             </Link>
             
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Badge variant={project.status === 'In Progress' ? 'learning' : 'confident'}>
-                    {project.status}
-                  </Badge>
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {project.year} <span className="mx-1.5 opacity-50">•</span> {project.role}
-                  </span>
-                </div>
+              <div className="max-w-3xl">
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
                   {project.title}
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl">
-                  {project.overview}
+                <p className="text-xl text-muted-foreground">
+                  {project.tagline}
                 </p>
               </div>
               
               <div className="flex items-center gap-3 shrink-0 pb-1">
-                {project.github && (
-                  <Button href={project.github} target="_blank" rel="noopener noreferrer" variant="secondary">
+                {project.githubLink && (
+                  <Button href={project.githubLink} target="_blank" rel="noopener noreferrer" variant="secondary">
                     <GithubIcon size={16} /> Source Code
                   </Button>
                 )}
-                {project.demo && (
-                  <Button href={project.demo} target="_blank" rel="noopener noreferrer">
+                {project.liveLink && (
+                  <Button href={project.liveLink} target="_blank" rel="noopener noreferrer">
                     <ExternalLink size={16} /> Live Demo
                   </Button>
                 )}
@@ -85,124 +86,82 @@ export default function ProjectCaseStudyPage({ params }: { params: { id: string 
           </FadeIn>
         </Section>
 
-        {/* Massive Hero Image */}
-        <Section className="mb-24">
-          <FadeIn delay={0.1}>
-            <div className="relative w-full aspect-[21/9] sm:aspect-[16/7] md:aspect-[2.5/1] rounded-3xl overflow-hidden bg-surface-elevated border border-surface-border shadow-modal">
-              <Image
-                src={project.coverImage}
-                alt={`${project.title} Cover`}
-                fill
-                priority
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
-            </div>
-          </FadeIn>
-        </Section>
-
         {/* Case Study Content Layout */}
         <Section>
-          <div className="grid gap-16 lg:grid-cols-[1fr_300px]">
+          <div className="grid gap-16 lg:grid-cols-[1fr_350px]">
             
             {/* Main Content Body */}
             <div className="space-y-16">
-              <FadeIn delay={0.2}>
+              <FadeIn delay={0.1}>
                 <section>
                   <h2 className="text-sm font-bold uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
-                    <span className="w-8 h-[1px] bg-accent/50" /> The Problem
+                    <span className="w-8 h-[1px] bg-accent/50" /> Project Overview
                   </h2>
                   <div className="prose prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed">
-                    <p>{project.problemStatement}</p>
+                    <p>{project.description}</p>
                   </div>
                 </section>
               </FadeIn>
 
-              <FadeIn delay={0.25}>
+              {/* Lifecycle Steps */}
+              <FadeIn delay={0.2}>
                 <section>
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-6 flex items-center gap-3">
-                    <span className="w-8 h-[1px] bg-surface-border" /> Development Process
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-8 flex items-center gap-3">
+                    <span className="w-8 h-[1px] bg-surface-border" /> Development Lifecycle
                   </h2>
-                  <div className="prose prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed">
-                    <p>{project.developmentProcess}</p>
-                  </div>
-                </section>
-              </FadeIn>
-
-              <FadeIn delay={0.3}>
-                <section>
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-6 flex items-center gap-3">
-                    <span className="w-8 h-[1px] bg-surface-border" /> Technical Challenges
-                  </h2>
-                  <div className="prose prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed">
-                    <p>{project.challenges}</p>
-                  </div>
-                </section>
-              </FadeIn>
-
-              <FadeIn delay={0.35}>
-                <section>
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-6 flex items-center gap-3">
-                    <span className="w-8 h-[1px] bg-emerald-400/50" /> Solutions & Implementations
-                  </h2>
-                  <div className="prose prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed">
-                    <p>{project.solutions}</p>
-                  </div>
-                </section>
-              </FadeIn>
-              
-              <FadeIn delay={0.4}>
-                <section>
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-foreground mb-6 flex items-center gap-3">
-                    <span className="w-8 h-[1px] bg-surface-border" /> Lessons Learned
-                  </h2>
-                  <div className="prose prose-invert prose-lg max-w-none text-muted-foreground leading-relaxed bg-surface p-8 rounded-2xl border border-surface-border shadow-sm">
-                    <p className="mb-0">{project.lessonsLearned}</p>
+                  <div className="space-y-8">
+                    {project.lifecycleSteps.map((step, idx) => (
+                      <div key={idx} className="relative pl-8 border-l border-surface-border before:absolute before:left-[-5px] before:top-2 before:h-2.5 before:w-2.5 before:rounded-full before:bg-accent/50">
+                        <h3 className="text-lg font-semibold text-foreground mb-2">{step.phase}</h3>
+                        <p className="text-muted-foreground leading-relaxed">{step.details}</p>
+                      </div>
+                    ))}
                   </div>
                 </section>
               </FadeIn>
             </div>
 
             {/* Sidebar (Meta & Role) */}
-            <div className="space-y-10 lg:pl-10 lg:border-l lg:border-surface-border">
-              <FadeIn delay={0.3}>
+            <div className="space-y-12 lg:pl-10 lg:border-l lg:border-surface-border">
+              <FadeIn delay={0.2}>
                 <div>
                   <h3 className="text-xs font-bold uppercase tracking-widest text-foreground mb-4">
-                    My Role
+                    My Role: {project.myRole.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {project.myRole}
-                  </p>
+                  <ul className="space-y-4">
+                    {project.myRole.contributions.map((contribution, idx) => (
+                      <li key={idx} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
+                        <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
+                        <span>{contribution}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </FadeIn>
 
-              <FadeIn delay={0.4}>
+              <FadeIn delay={0.3}>
                 <div>
                   <h3 className="text-xs font-bold uppercase tracking-widest text-foreground mb-4">
                     Technology Stack
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {project.stack.map(tech => (
-                      <span key={tech} className="skill-pill py-1.5 px-3 bg-surface border border-surface-border rounded-lg text-sm font-medium text-foreground">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
-              
-              <FadeIn delay={0.5}>
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-foreground mb-4">
-                    Categories
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.category.map(cat => (
-                      <span key={cat} className="text-sm font-medium text-muted-foreground">
-                        {cat}
-                        <span className="mx-2 opacity-30 last:hidden">•</span>
-                      </span>
-                    ))}
+                    {project.techStack.map(tech => {
+                      const Icon = getIconComponent(tech.icon)
+                      return (
+                        <div 
+                          key={tech.name} 
+                          className="flex items-center gap-2 py-1.5 px-3 rounded-lg text-sm font-medium border"
+                          style={{
+                            borderColor: `${tech.color}40`,
+                            backgroundColor: `${tech.color}10`,
+                            color: tech.color
+                          }}
+                        >
+                          <Icon className="w-4 h-4" />
+                          {tech.name}
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               </FadeIn>
@@ -211,31 +170,35 @@ export default function ProjectCaseStudyPage({ params }: { params: { id: string 
           </div>
         </Section>
 
-        {/* Gallery / Mockups */}
-        {project.gallery && project.gallery.length > 0 && (
+        {/* Visual Showcase */}
+        {project.visualThoughtProcess && project.visualThoughtProcess.length > 0 && (
           <Section className="mt-24 pt-24 border-t border-surface-border">
             <FadeIn>
               <h2 className="text-2xl font-semibold text-foreground tracking-tight mb-12 text-center">
-                Visual Showcase
+                Visual Thought Process
               </h2>
             </FadeIn>
             
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {project.gallery.map((img, idx) => (
-                <StaggerItem key={idx} className={cn(
-                  "relative rounded-2xl overflow-hidden bg-surface-elevated border border-surface-border shadow-sm group",
-                  idx === 0 && project.gallery.length % 2 !== 0 ? "md:col-span-2 aspect-[21/9]" : "aspect-[4/3]"
-                )}>
-                  <div className="absolute inset-0 bg-accent/5 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
-                  <Image
-                    src={img}
-                    alt={`${project.title} mockup ${idx + 1}`}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                </StaggerItem>
+            <div className="space-y-16">
+              {project.visualThoughtProcess.map((item, idx) => (
+                <FadeIn key={idx}>
+                  <div className="flex flex-col lg:flex-row gap-8 items-center bg-surface border border-surface-border rounded-2xl p-6 sm:p-8">
+                    <div className="w-full lg:w-1/3 space-y-4">
+                      <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                    </div>
+                    <div className="w-full lg:w-2/3 relative aspect-[16/9] rounded-xl overflow-hidden border border-surface-border shadow-sm">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  </div>
+                </FadeIn>
               ))}
-            </StaggerContainer>
+            </div>
           </Section>
         )}
       </article>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 }
 
 export default function ResumePage() {
-  const featuredProjects = projects.filter((p) => p.featured)
+  const featuredProjects = projects
 
   return (
     <>
@@ -145,32 +145,32 @@ export default function ResumePage() {
                         <div className="flex items-center gap-2">
                           <h4 className="text-base font-semibold text-foreground">{project.title}</h4>
                           <span className="px-2 py-0.5 rounded-md bg-surface-elevated border border-surface-border text-[10px] font-medium text-muted-foreground">
-                            {project.role}
+                            {project.myRole.title}
                           </span>
                         </div>
                         <div className="flex items-center gap-3 text-sm mt-1 sm:mt-0">
-                          {project.github && (
-                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+                          {project.githubLink && (
+                            <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
                               <GithubIcon size={12} /> Source
                             </a>
                           )}
-                          {project.demo && (
-                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+                          {project.liveLink && (
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
                               <ExternalLink size={12} /> Live
                             </a>
                           )}
                         </div>
                       </div>
-                      <p className="text-xs font-medium text-foreground/70 mb-2">{project.stack.join(' • ')}</p>
+                      <p className="text-xs font-medium text-foreground/70 mb-2">{project.techStack.map(t => t.name).join(' • ')}</p>
                       <ul className="space-y-1.5 list-disc list-outside ml-4">
                         <li className="text-sm text-muted-foreground leading-relaxed pl-1">
-                          <span className="font-medium text-foreground/80">Problem solved: </span>{project.problemStatement}
+                          <span className="font-medium text-foreground/80">Goal: </span>{project.tagline}
                         </li>
                         <li className="text-sm text-muted-foreground leading-relaxed pl-1">
-                          <span className="font-medium text-foreground/80">Role: </span>{project.myRole}
+                          <span className="font-medium text-foreground/80">Role: </span>{project.myRole.title}
                         </li>
                         <li className="text-sm text-muted-foreground leading-relaxed pl-1">
-                          <span className="font-medium text-foreground/80">Key learning: </span>{project.lessonsLearned}
+                          <span className="font-medium text-foreground/80">Focus: </span>{project.lifecycleSteps[0]?.phase}
                         </li>
                       </ul>
                     </div>

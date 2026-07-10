@@ -37,7 +37,7 @@ const stats = [
   { label: 'Months',       value: `${profile.stats.monthsLearning}+`, icon: BookOpen, sub: 'coding' },
 ]
 
-const featuredProjects = projects.filter((p) => p.featured).slice(0, 3)
+const featuredProjects = projects.slice(0, 3)
 
 // ── Progress Bar (Learning) ───────────────────────────────────────────────
 function ProgressBar({ progress, title }: { progress: number; title: string }) {
@@ -409,25 +409,25 @@ export default function HomePage() {
                         <Code2 size={20} className="text-muted-foreground group-hover:text-foreground transition-colors" />
                       </div>
                       <div className="flex items-center gap-2">
-                        {project.github && (
-                          <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                            className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border text-muted-foreground hover:text-foreground hover:border-white/20 transition-all shadow-sm">
+                        {project.githubLink && (
+                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                            className="flex h-8 w-8 items-center justify-center rounded-lg border border-surface-border bg-surface text-muted-foreground shadow-sm transition-all hover:border-white/20 hover:text-foreground">
                             <GithubIcon size={14} />
                           </a>
                         )}
-                        {project.demo && (
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label="Live Demo"
-                            className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface border border-surface-border text-muted-foreground hover:text-foreground hover:border-white/20 transition-all shadow-sm">
+                        {project.liveLink && (
+                          <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label="Live Demo"
+                            className="flex h-8 w-8 items-center justify-center rounded-lg border border-surface-border bg-surface text-muted-foreground shadow-sm transition-all hover:border-white/20 hover:text-foreground">
                             <ExternalLink size={14} />
                           </a>
                         )}
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground tracking-tight mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {project.stack.slice(0, 4).map((tech) => (
-                        <span key={tech} className="tag text-[10px] px-2 py-0.5">{tech}</span>
+                    <h3 className="mb-2 text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent">{project.title}</h3>
+                    <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      {project.techStack.slice(0, 4).map((tech) => (
+                        <span key={tech.name} className="tag px-2 py-0.5 text-[10px]">{tech.name}</span>
                       ))}
                     </div>
                   </div>
