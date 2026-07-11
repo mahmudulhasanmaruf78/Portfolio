@@ -312,7 +312,7 @@ export function HeroSection() {
                     Available
                   </span>
                 </span>
-                Internships starting Jan 2026
+                Internships from August 2026
               </span>
             </motion.div>
 

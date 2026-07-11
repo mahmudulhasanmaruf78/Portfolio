@@ -13,7 +13,7 @@ export const profile = {
   ],
   university: 'American International University–Bangladesh (AIUB)',
   department: 'Computer Science & Engineering',
-  expectedGraduation: 'December 2025',
+  expectedGraduation: 'December 2026',
   cgpa: '3.68',
   cgpaScale: '4.00',
   location: 'Dhaka, Bangladesh',
