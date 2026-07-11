@@ -4,7 +4,7 @@ export const education = {
   university: {
     name: 'American International University–Bangladesh (AIUB)',
     degree: 'Bachelor of Science in Computer Science & Engineering',
-    duration: 'Jan 2022 – Dec 2025 (Expected)',
+    duration: 'Jan 2022 – Aug 2026 (Expected)',
     cgpa: '3.68 / 4.00',
     status: 'Final Year',
     courses: [

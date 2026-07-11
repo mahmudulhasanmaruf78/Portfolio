@@ -50,10 +50,10 @@ export const profile = {
     },
   ],
   funFacts: [
-    'I built my first web project in high school—a simple HTML/CSS site that sparked my love for coding.',
-    'I maintain a comprehensive digital "second brain" with hundreds of development notes, code snippets, and architectural patterns.',
-    'I am an advocate for accessibility on the web, ensuring that the applications I build are usable by everyone.',
-    'When I am not writing code, I enjoy playing chess, exploring UI design trends, and reading about software architecture.',
+    'I built my first web project in high school, a simple HTML/CSS site that sparked my love for coding.',
+    'I enjoy learning new web technologies and challenging myself by building real-world projects.',
+    'I believe great software should be accessible, responsive, and easy for everyone to use.',
+    'Outside of coding, I enjoy watching movies, animations, and playing video games.',
   ],
   stats: {
     projects: 5,
