@@ -139,7 +139,7 @@ export const projects: Project[] = [
       {
         title: "Project Banner",
         description: "A cyclone-themed banner representing the disaster preparedness focus of the CycloneSafe planning project.",
-        image: "/image/Custom cyclone-themed banner.png"
+        image: "/images/Custom cyclone-themed banner.png"
       }
     ],
     githubLink: "https://github.com/mahmudulhasanmaruf78/Software-project-CycloneSafe",
