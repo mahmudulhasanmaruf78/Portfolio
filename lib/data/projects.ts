@@ -96,13 +96,13 @@ export const projects: Project[] = [
     tagline: "A complete Software Engineering lifecycle project applying Agile Scrum to design a cyclone safety platform.",
     description: "CycloneSafe is an academic Software Engineering project focused on designing a comprehensive disaster preparedness platform for cyclone-prone communities. The project covers the full SDLC — from requirements gathering and UML modeling to risk assessment, budgeting, and Scrum-based project management — demonstrating industry-standard engineering practices without a production implementation.",
     techStack: [
-      { name: "Figma", icon: "SiFigma", color: "#F24E1E" },
-      { name: "ClickUp", icon: "SiClickup", color: "#7B68EE" },
-      { name: "Draw.io", icon: "SiDiagramsdotnet", color: "#F08705" },
-      { name: "Git", icon: "SiGit", color: "#F05032" },
-      { name: "GitHub", icon: "SiGithub", color: "#ffffff" },
-      { name: "PowerPoint", icon: "SiMicrosoftpowerpoint", color: "#B7472A" },
-      { name: "Word", icon: "SiMicrosoftword", color: "#2B579A" }
+      { name: "Figma", icon: "FaFigma", color: "#F24E1E" },
+      { name: "ClickUp", icon: "FaTasks", color: "#7B68EE" },
+      { name: "Draw.io", icon: "FaProjectDiagram", color: "#F08705" },
+      { name: "Git", icon: "FaGit", color: "#F05032" },
+      { name: "GitHub", icon: "FaGithub", color: "#ffffff" },
+      { name: "PowerPoint", icon: "FaFilePowerpoint", color: "#B7472A" },
+      { name: "Word", icon: "FaFileWord", color: "#2B579A" }
     ],
     myRole: {
       title: "Project Planner & Documentation Lead",
