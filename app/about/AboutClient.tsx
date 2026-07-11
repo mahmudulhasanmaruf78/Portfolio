@@ -76,7 +76,7 @@ export default function AboutClient() {
                 </h3>
                 <motion.div 
                   whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                  className="relative aspect-video w-full rounded-lg overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-pointer shadow-sm"
+                  className="relative aspect-[9/16] w-full max-w-[280px] mx-auto rounded-lg overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-pointer shadow-sm"
                 >
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-surface-elevated text-muted-foreground z-10 transition-opacity duration-300">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-purple-500/10 opacity-50" />

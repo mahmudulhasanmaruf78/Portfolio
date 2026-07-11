@@ -279,7 +279,7 @@ export default function HomePage() {
                   <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
                     Video CV
                   </h3>
-                  <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-pointer shadow-sm">
+                  <div className="relative aspect-[9/16] w-full max-w-[280px] mx-auto rounded-lg overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-pointer shadow-sm">
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-surface-elevated text-muted-foreground z-10">
                       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-purple-500/10 opacity-50" />
                       <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-accent/90 text-white shadow-[0_0_20px_hsl(var(--accent)/0.4)] transition-transform group-hover:scale-110 mb-2">
