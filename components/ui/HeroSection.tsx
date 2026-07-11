@@ -390,7 +390,7 @@ export function HeroSection() {
                 Contact Me
               </HeroCTA>
 
-              <HeroCTA href="/resume.pdf" download>
+              <HeroCTA href="/Mahmudul Hasan Maruf  CV.pdf" download>
                 <Download size={15} />
                 Résumé
               </HeroCTA>
