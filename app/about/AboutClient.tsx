@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, PlayCircle } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { FacebookIcon, GithubIcon, LinkedinIcon } from '@/components/ui/Icons'
 import { profile } from '@/lib/data/profile'
@@ -68,22 +68,37 @@ export default function AboutClient() {
           {/* Sidebar */}
           <div className="space-y-8 lg:mt-4">
             
-            {/* Profile Image Placeholder */}
+            {/* Video CV Section */}
             <FadeIn delay={0.25}>
-              <motion.div 
-                whileHover={shouldReduceMotion ? {} : { y: -4 }}
-                className="relative aspect-square w-full rounded-2xl overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-default"
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground p-6 text-center z-10">
-                  <div className="h-16 w-16 mb-4 rounded-full border-2 border-dashed border-muted-foreground/50 flex items-center justify-center">
-                    <span className="text-2xl">📸</span>
+              <div className="card p-4 bg-surface-elevated/30 transition-all duration-300 hover:bg-surface-elevated/50">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+                  Video CV
+                </h3>
+                <motion.div 
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
+                  className="relative aspect-video w-full rounded-lg overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-pointer shadow-sm"
+                >
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-surface-elevated text-muted-foreground z-10 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-purple-500/10 opacity-50" />
+                    <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-accent/90 text-white shadow-[0_0_20px_hsl(var(--accent)/0.4)] transition-transform group-hover:scale-110 mb-2">
+                      <PlayCircle size={28} />
+                    </div>
+                    <p className="text-xs font-medium text-foreground relative z-10">Watch Video</p>
                   </div>
-                  <p className="text-sm font-medium text-foreground">Profile Picture</p>
-                  <p className="text-xs opacity-70 mt-1">Add your professional headshot here.</p>
-                </div>
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-50 pointer-events-none" />
-              </motion.div>
+                  {/* Replace this iframe src with your actual Video CV URL */}
+                  <iframe
+                    src="https://drive.google.com/file/d/1XemofzFskOoocmNNez0gPxJ5fU5eqWMU/preview"
+                    title="Video CV"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ zIndex: 20 }}
+                  />
+                </motion.div>
+                <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
+                  Get a quick overview of my background, skills, and what I'm looking for in my next role.
+                </p>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.3}>
