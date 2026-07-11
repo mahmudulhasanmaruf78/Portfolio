@@ -89,5 +89,60 @@ export const projects: Project[] = [
     ],
     githubLink: "https://github.com/mahmudulhasanmaruf78/Web_Project_Spring_25_26_G6",
     liveLink: ""
+  },
+  {
+    id: "cyclonesafe",
+    title: "CycloneSafe – Disaster Preparedness & Cyclone Safety Planning System",
+    tagline: "A complete Software Engineering lifecycle project applying Agile Scrum to design a cyclone safety platform.",
+    description: "CycloneSafe is an academic Software Engineering project focused on designing a comprehensive disaster preparedness platform for cyclone-prone communities. The project covers the full SDLC — from requirements gathering and UML modeling to risk assessment, budgeting, and Scrum-based project management — demonstrating industry-standard engineering practices without a production implementation.",
+    techStack: [
+      { name: "Figma", icon: "SiFigma", color: "#F24E1E" },
+      { name: "ClickUp", icon: "SiClickup", color: "#7B68EE" },
+      { name: "Draw.io", icon: "SiDiagramsdotnet", color: "#F08705" },
+      { name: "Git", icon: "SiGit", color: "#F05032" },
+      { name: "GitHub", icon: "SiGithub", color: "#ffffff" },
+      { name: "PowerPoint", icon: "SiMicrosoftpowerpoint", color: "#B7472A" },
+      { name: "Word", icon: "SiMicrosoftword", color: "#2B579A" }
+    ],
+    myRole: {
+      title: "Project Planner & Documentation Lead",
+      contributions: [
+        "Led software project planning and defined the full project scope, objectives, and requirements.",
+        "Prepared comprehensive Software Development Life Cycle (SDLC) documentation following industry standards.",
+        "Designed UML diagrams (Use Case, Activity, Sequence, and Class Diagrams) using Draw.io.",
+        "Conducted budgeting, cost estimation, and financial feasibility analysis for the proposed system.",
+        "Performed risk identification, assessment, and mitigation planning across all project phases.",
+        "Created the Work Breakdown Structure (WBS) and effort estimation for all deliverables.",
+        "Managed Scrum artifacts including backlog, sprint planning, and Agile workflow documentation.",
+        "Designed and delivered the project presentation materials and maintained version control via Git & GitHub."
+      ]
+    },
+    lifecycleSteps: [
+      {
+        phase: "Phase 1: Requirements & Scope Definition",
+        details: "Gathered functional and non-functional requirements, defined project scope, objectives, and conducted stakeholder analysis to understand the needs of disaster-affected communities."
+      },
+      {
+        phase: "Phase 2: System Design & UML Modeling",
+        details: "Produced comprehensive UML diagrams including Use Case, Activity, Sequence, and Class Diagrams using Draw.io to model the system architecture and behavior."
+      },
+      {
+        phase: "Phase 3: Agile Planning & Risk Management",
+        details: "Applied Scrum methodology to define sprints and backlog items. Conducted full risk assessment with mitigation strategies and produced a Work Breakdown Structure with effort estimates."
+      },
+      {
+        phase: "Phase 4: Documentation & Presentation",
+        details: "Compiled all engineering artifacts into a formal Software Engineering report and designed a structured presentation to communicate findings and system design to stakeholders."
+      }
+    ],
+    visualThoughtProcess: [
+      {
+        title: "Project Banner",
+        description: "A cyclone-themed banner representing the disaster preparedness focus of the CycloneSafe planning project.",
+        image: "/image/Custom cyclone-themed banner.png"
+      }
+    ],
+    githubLink: "https://github.com/mahmudulhasanmaruf78/Software-project-CycloneSafe",
+    liveLink: "/Software Project.pdf"
   }
 ];
