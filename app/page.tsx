@@ -7,7 +7,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import {
   ExternalLink, BookOpen, Code2, Award, TrendingUp, Mail,
   ChevronRight, GraduationCap, MessageSquare, Send, CheckCircle2,
-  AlertCircle, X, Target, Circle, ArrowRight
+  AlertCircle, X, Target, Circle, ArrowRight, PlayCircle
 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -274,6 +274,34 @@ export default function HomePage() {
 
             <FadeIn delay={0.1}>
               <div className="space-y-5">
+                {/* Video CV Section */}
+                <div className="card p-4 bg-surface-elevated/30 transition-all duration-300 hover:bg-surface-elevated/50">
+                  <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                    Video CV
+                  </h3>
+                  <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-surface-border bg-surface-elevated/50 group cursor-pointer shadow-sm">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-surface-elevated text-muted-foreground z-10">
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-purple-500/10 opacity-50" />
+                      <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-accent/90 text-white shadow-[0_0_20px_hsl(var(--accent)/0.4)] transition-transform group-hover:scale-110 mb-2">
+                        <PlayCircle size={28} />
+                      </div>
+                      <p className="text-xs font-medium text-foreground relative z-10">Watch Video</p>
+                    </div>
+                    {/* The user's Google Drive embed link */}
+                    <iframe
+                      src="https://drive.google.com/file/d/1XemofzFskOoocmNNez0gPxJ5fU5eqWMU/preview"
+                      title="Video CV"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full"
+                      style={{ zIndex: 20 }}
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
+                    A quick overview of my background and skills.
+                  </p>
+                </div>
+
                 {/* Quick Info */}
                 <div className="card p-6 space-y-4">
                   <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">Quick Info</h3>
