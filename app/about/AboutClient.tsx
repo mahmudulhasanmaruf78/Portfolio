@@ -91,7 +91,7 @@ export default function AboutClient() {
                     title="Video CV"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                    className="absolute inset-0 h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 h-full w-full"
                     style={{ zIndex: 20 }}
                   />
                 </motion.div>
