@@ -72,7 +72,7 @@ export default function ResumePage() {
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {profile.bio[0]} Passionate about building robust web applications and currently seeking
-                  an internship or junior developer role starting January 2026. Proven ability to learn quickly
+                  an internship or junior developer role starting August 2026. Proven ability to learn quickly
                   and apply new technologies through numerous academic and personal projects.
                 </p>
               </section>

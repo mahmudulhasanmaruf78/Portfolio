@@ -32,7 +32,7 @@ export const education = {
       year: '2021',
     },
     {
-      name: 'Court Model High School, Ragshahi',
+      name: 'Court Model High School, Rajshahi',
       level: 'Secondary School Certificate (SSC)',
       group: 'Science',
       result: 'GPA 5.00',

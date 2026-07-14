@@ -17,7 +17,7 @@ const getIconComponent = (iconName: string) => {
   if (iconName.startsWith('Si')) return (ReactIconsSi as any)[iconName]
   if (iconName.startsWith('Fa')) return (ReactIconsFa as any)[iconName]
   if (iconName.startsWith('Tb')) return (ReactIconsTb as any)[iconName]
-  if (iconName.startsWith('Di')) return (ReactIconsSi as any)[iconName.replace('Di', 'Si')] // fallback for DevIcons to SimpleIcons if possible, though user used DiMysql
+  if (iconName.startsWith('Di')) return (ReactIconsSi as any)[iconName.replace('Di', 'Si')]
   return Code2
 }
 

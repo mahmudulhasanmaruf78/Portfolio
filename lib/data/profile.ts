@@ -21,7 +21,7 @@ export const profile = {
   github: 'https://github.com/mahmudulhasanmaruf78',
   linkedin: 'https://www.linkedin.com/in/mahmudul-hasan-maruf-1a2a3041b/',
   facebook: 'https://www.facebook.com/mahmudulmaruf78',
-  availability: 'Available for internships and entry-level roles starting January 2026',
+  availability: 'Available for internships and entry-level roles starting August 2026',
   bio: [
     "I'm a final-year Computer Science & Engineering student at AIUB with a deep passion for building robust and intuitive web applications. My journey into software development began with a curiosity for how complex systems are architected behind the scenes, and it quickly evolved into a dedicated pursuit of engineering excellence.",
     "Over the course of my academic career, I've transitioned from grasping foundational programming concepts to architecting full-stack applications using modern technologies like React, Next.js, Node.js, and PostgreSQL. I care deeply about the craft of software development—writing clean, maintainable code, designing thoughtful user experiences, and building scalable solutions.",
