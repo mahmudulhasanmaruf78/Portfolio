@@ -392,7 +392,7 @@ export function HeroSection() {
 
               <HeroCTA href="/Mahmudul Hasan Maruf  CV.pdf" download>
                 <Download size={15} />
-                Résumé
+                Resume
               </HeroCTA>
             </motion.div>
 
